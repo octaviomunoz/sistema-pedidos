@@ -17,7 +17,7 @@ defmodule Tienda.Tablas.Pais do
   @doc false
   def changeset(pais, attrs) do
     pais
-    |> cast(attrs, [:nombre])
-    |> validate_required([:nombre])
+    |> cast(attrs, [:nombre, :continente_id])
+    |> validate_required([:nombre, :continente_id])
   end
 end

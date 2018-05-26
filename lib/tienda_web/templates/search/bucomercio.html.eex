@@ -1,0 +1,25 @@
+<h2> Buscando Comercio </h2>
+<h4> Comercio </h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Calle</th>
+      <th>Numero</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for comercio <- @comercios do %>
+      <tr>
+          <td><%= comercio.nombre %></td>
+          <td><%= comercio.calleDireccion %></td>
+          <td><%= comercio.numeroDireccion %></td>
+
+          
+      </tr>
+    <%end%>
+  </tbody>
+</table>

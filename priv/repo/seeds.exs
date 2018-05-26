@@ -143,6 +143,56 @@ Tienda.Repo.insert!(%Comercio{
   calificacioncomercio_id: 1
   })
 
+  Tienda.Repo.insert!(%Comercio{
+    nombre: "Don Eleodoro",
+    email: "donjuan@ejemplo.Comercio",
+    telefono: 7654321,
+    calleDireccion: "1 sur",
+    numeroDireccion: 676,
+    fax: "7654321",
+    urlSitio: "www.donjuan.cl",
+    valorMinEntregaComida: 2,
+    porcentajeDescuentoGeneral: 5,
+    mensajeGeneral: "Bienvenido a Don Juan",
+    mensajeDescuento: "Ahorro",
+    visibleComercio: true,
+    mensajeUsuarioSolicitud: "Solicitud Realizada",
+    mensajeUsuarioCancelacionSolicitud: "Solicitud Cancelada",
+    comercioActivo: true,
+    condiciones: "Solo compras dentro de Talca",
+    tipoPagoSolicitud: 1,
+    representante_id: 1,
+    pais_id: 1,
+    ciudad_id: 2,
+    tipocomercio_id: 1,
+    calificacioncomercio_id: 1
+    })
+
+    Tienda.Repo.insert!(%Comercio{
+      nombre: "Don Emilio",
+      email: "donjuan@ejemplo.Comercio",
+      telefono: 7654321,
+      calleDireccion: "1 sur",
+      numeroDireccion: 677,
+      fax: "7654321",
+      urlSitio: "www.donjuan.cl",
+      valorMinEntregaComida: 2,
+      porcentajeDescuentoGeneral: 5,
+      mensajeGeneral: "Bienvenido a Don Juan",
+      mensajeDescuento: "Ahorro",
+      visibleComercio: true,
+      mensajeUsuarioSolicitud: "Solicitud Realizada",
+      mensajeUsuarioCancelacionSolicitud: "Solicitud Cancelada",
+      comercioActivo: true,
+      condiciones: "Solo compras dentro de Talca",
+      tipoPagoSolicitud: 1,
+      representante_id: 1,
+      pais_id: 1,
+      ciudad_id: 2,
+      tipocomercio_id: 1,
+      calificacioncomercio_id: 1
+      })
+
 
 
 alias Tienda.Tablas.Producto
@@ -152,7 +202,8 @@ Tienda.Repo.insert!(%Producto{
   precioUnitario: 3000,
   activo: true,
   porcentajeDescuento: 0,
-  mensajeDescuento: "mensaje1"
+  mensajeDescuento: "mensaje1",
+  comercio_id: 1
   })
 
 
@@ -162,7 +213,8 @@ Tienda.Repo.insert!(%Producto{
   precioUnitario: 2300,
   activo: true,
   porcentajeDescuento: 0,
-  mensajeDescuento: "mensaje2"
+  mensajeDescuento: "mensaje2",
+  comercio_id: 1
   })
 
 Tienda.Repo.insert!(%Producto{
@@ -171,7 +223,8 @@ Tienda.Repo.insert!(%Producto{
   precioUnitario: 4500,
   activo: true,
   porcentajeDescuento: 0,
-  mensajeDescuento: "mensaje3"
+  mensajeDescuento: "mensaje3",
+  comercio_id: 1
   })
 
 Tienda.Repo.insert!(%Producto{
@@ -180,5 +233,6 @@ Tienda.Repo.insert!(%Producto{
   precioUnitario: 1700,
   #activo: true,
   porcentajeDescuento: 15,
-  mensajeDescuento: "mensaje4"
+  mensajeDescuento: "mensaje4",
+  comercio_id: 1
   })

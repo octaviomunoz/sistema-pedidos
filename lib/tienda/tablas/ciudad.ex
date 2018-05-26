@@ -16,7 +16,7 @@ defmodule Tienda.Tablas.Ciudad do
   @doc false
   def changeset(ciudad, attrs) do
     ciudad
-    |> cast(attrs, [:nombre, :codigoTelefono])
-    |> validate_required([:nombre, :codigoTelefono])
+    |> cast(attrs, [:nombre, :codigoTelefono, :pais_id])
+    |> validate_required([:nombre, :codigoTelefono, :pais_id])
   end
 end

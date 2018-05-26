@@ -25,7 +25,7 @@ defmodule Tienda.Tablas.Producto do
   @doc false
   def changeset(producto, attrs) do
     producto
-    |> cast(attrs, [:nombre, :foto, :urlVideo, :ingrediente, :precioUnitario, :informacion, :activo, :porcentajeDescuento, :mensajeDescuento])
-    |> validate_required([:nombre, :ingrediente, :precioUnitario, :porcentajeDescuento, :mensajeDescuento])
+    |> cast(attrs, [:nombre, :foto, :urlVideo, :ingrediente, :precioUnitario, :informacion, :activo, :porcentajeDescuento, :mensajeDescuento, :comercio_id])
+    |> validate_required([:nombre, :ingrediente, :precioUnitario, :porcentajeDescuento, :mensajeDescuento, :comercio_id])
   end
 end

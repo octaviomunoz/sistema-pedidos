@@ -17,6 +17,15 @@ defmodule TiendaWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
+
+    get "/search/continente", SearchController, :elegircontinente
+    post "/search/pais", SearchController, :elegirpais
+    post "/search/ciudad", SearchController, :elegirciudad
+    post "/search/comercio", SearchController, :elegircomercio
+
+    post "/productos", PedidoController, :mostrar_producto
+
   end
 
   # Other scopes may use custom stacks.
