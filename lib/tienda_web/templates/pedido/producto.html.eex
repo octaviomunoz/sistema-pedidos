@@ -1,0 +1,23 @@
+<h2> Productos </h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Decuento</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for producto <- @productos do %>
+      <tr>
+        <td><%= elem(producto, 1) %></td>
+        <td><%= elem(producto, 2) %></td>
+        <td><%= elem(producto, 3) %></td>
+
+      </tr>
+    <%end%>
+  </tbody>
+</table>

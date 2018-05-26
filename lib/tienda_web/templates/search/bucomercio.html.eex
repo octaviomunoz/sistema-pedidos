@@ -14,11 +14,14 @@
   <tbody>
     <%= for comercio <- @comercios do %>
       <tr>
-          <td><%= comercio.nombre %></td>
-          <td><%= comercio.calleDireccion %></td>
-          <td><%= comercio.numeroDireccion %></td>
+        <td><%= elem(comercio, 1) %></td>
+        <td><%= elem(comercio, 2) %></td>
+        <td><%= elem(comercio, 3) %></td>
+        <td><%= elem comercio, 0 %></td>
 
-          
+          <td class="text-right">
+            <span><%= link "ElegirProducto", to: pedido_path(@conn, :mostrar_producto, %{id: elem(comercio, 0)}), method: :post %></span>
+          </td>
       </tr>
     <%end%>
   </tbody>

@@ -18,7 +18,6 @@ defmodule Tienda.Buscar.BuscarComercio do
   end
 
   def get_continente!(nombre) do
-    IO.inspect(label: nombre)
     if nombre != nil do
       Repo.get_by!(Continente, nombre: nombre)
     end
@@ -33,7 +32,6 @@ defmodule Tienda.Buscar.BuscarComercio do
   end
 
   def get_pais!(nombre) do
-    IO.inspect(label: nombre)
     if nombre != nil do
       Repo.get_by!(Pais, nombre: nombre)
     end
@@ -48,7 +46,6 @@ defmodule Tienda.Buscar.BuscarComercio do
   end
 
   def get_ciudad!(nombre) do
-    IO.inspect(label: nombre)
     if nombre != nil do
       Repo.get_by!(Ciudad, nombre: nombre)
     end
@@ -56,7 +53,8 @@ defmodule Tienda.Buscar.BuscarComercio do
 
   def nombreComercioCiudad(ciudad_id) do
     nombres = from com in Comercio,
-      where: com.ciudad_id == ^ciudad_id
+      where: com.ciudad_id == ^ciudad_id,
+      select: {com.id, com.nombre, com.calleDireccion, com.numeroDireccion}
 
     Repo.all(nombres)
   end
