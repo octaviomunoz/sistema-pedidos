@@ -17,6 +17,7 @@ defmodule TiendaWeb.SearchController do
 
 
   def elegirpais(conn, con) do
+    IO.inspect(label: con)
     continente = BuscarComercio.get_continente!(con["continente"]["nombre"])
     paises = BuscarComercio.nombre_pais(continente.id)
     nombre = BuscarComercio.change_pais(%Pais{})

@@ -1,0 +1,9 @@
+<h2> Login Usuario </h2>
+
+<%= form_for @datos, login_path(@conn, :validacion), fn f -> %>
+
+  <%= email_input f, :email %>
+  <%= password_input f, :password %>
+
+  <%= submit "Submit" %>
+<%end%>
