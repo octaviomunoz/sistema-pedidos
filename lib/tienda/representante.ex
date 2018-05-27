@@ -1,4 +1,4 @@
-defmodule Tienda.Tablas.Representante do
+defmodule Tienda.Representante do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -10,7 +10,7 @@ defmodule Tienda.Tablas.Representante do
     field :numeroDireccion, :integer
     field :telefono, :string
 
-    has_one :comercio, Tienda.Tablas.Comercio
+    has_one :comercio, Tienda.Comercio
 
     timestamps()
   end

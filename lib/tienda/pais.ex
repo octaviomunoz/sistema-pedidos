@@ -1,4 +1,4 @@
-defmodule Tienda.Tablas.Pais do
+defmodule Tienda.Pais do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -6,9 +6,9 @@ defmodule Tienda.Tablas.Pais do
   schema "pais" do
     field :nombre, :string
 
-    belongs_to :continente, Tienda.Tablas.Continente
-    has_many :ciudad, Tienda.Tablas.Ciudad
-    has_many :comercio, Tienda.Tablas.Comercio
+    belongs_to :continente, Tienda.Continente
+    has_many :ciudad, Tienda.Ciudad
+    has_many :comercio, Tienda.Comercio
 
 
     timestamps()

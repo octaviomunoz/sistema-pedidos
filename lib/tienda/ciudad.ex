@@ -1,4 +1,4 @@
-defmodule Tienda.Tablas.Ciudad do
+defmodule Tienda.Ciudad do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -7,8 +7,8 @@ defmodule Tienda.Tablas.Ciudad do
     field :codigoTelefono, :string
     field :nombre, :string
 
-    belongs_to :pais, Tienda.Tablas.Pais
-    has_many :comercio, Tienda.Tablas.Comercio
+    belongs_to :pais, Tienda.Pais
+    has_many :comercio, Tienda.Comercio
 
     timestamps()
   end

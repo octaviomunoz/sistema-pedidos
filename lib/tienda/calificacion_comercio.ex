@@ -1,4 +1,4 @@
-defmodule Tienda.Tablas.CalificacionComercio do
+defmodule Tienda.CalificacionComercio do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -7,7 +7,7 @@ defmodule Tienda.Tablas.CalificacionComercio do
     field :sumaNotaCliente, :integer
     field :totalComentario, :integer
 
-    has_one :comercio, Tienda.Tablas.Comercio
+    has_one :comercio, Tienda.Comercio
     timestamps()
   end
 

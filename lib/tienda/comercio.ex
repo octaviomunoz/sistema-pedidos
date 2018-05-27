@@ -1,4 +1,4 @@
-defmodule Tienda.Tablas.Comercio do
+defmodule Tienda.Comercio do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -30,14 +30,14 @@ defmodule Tienda.Tablas.Comercio do
     field :valorMinEntregaComida, :integer
 
 
-    belongs_to :representante, Tienda.Tablas.Representante
-    belongs_to :pais, Tienda.Tablas.Pais
-    belongs_to :ciudad, Tienda.Tablas.Ciudad
-    belongs_to :tipocomercio, Tienda.Tablas.TipoComercio
-    belongs_to :calificacioncomercio, Tienda.Tablas.CalificacionComercio
+    belongs_to :representante, Tienda.Representante
+    belongs_to :pais, Tienda.Pais
+    belongs_to :ciudad, Tienda.Ciudad
+    belongs_to :tipocomercio, Tienda.TipoComercio
+    belongs_to :calificacioncomercio, Tienda.CalificacionComercio
 
-    has_many :producto, Tienda.Tablas.Producto
-    has_many :solicitud, Tienda.Tablas.Solicitud
+    has_many :producto, Tienda.Producto
+    has_many :solicitud, Tienda.Solicitud
     timestamps()
   end
 

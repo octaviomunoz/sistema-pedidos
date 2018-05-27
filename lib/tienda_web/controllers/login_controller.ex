@@ -1,7 +1,7 @@
 defmodule TiendaWeb.LoginController do
   use TiendaWeb, :controller
 
-  alias Tienda.Tablas.Usuario
+  alias Tienda.Usuario
   alias Tienda.Login.Login
 
   def loginusuario(conn, _params) do

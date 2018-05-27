@@ -3,10 +3,10 @@ defmodule Tienda.Buscar.BuscarComercio do
   import Ecto.Query, warn: false
   alias Tienda.Repo
 
-  alias Tienda.Tablas.Continente
-  alias Tienda.Tablas.Pais
-  alias Tienda.Tablas.Ciudad
-  alias Tienda.Tablas.Comercio
+  alias Tienda.Continente
+  alias Tienda.Pais
+  alias Tienda.Ciudad
+  alias Tienda.Comercio
 
 
 

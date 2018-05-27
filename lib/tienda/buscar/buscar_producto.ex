@@ -3,7 +3,7 @@ defmodule Tienda.Buscar.BuscarProducto do
   import Ecto.Query, warn: false
   alias Tienda.Repo
 
-  alias Tienda.Tablas.Producto
+  alias Tienda.Producto
 
   def buscar_producto(comercio_id) do
     produc = from p in Producto,

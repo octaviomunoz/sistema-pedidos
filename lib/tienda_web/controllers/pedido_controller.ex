@@ -3,7 +3,7 @@ defmodule TiendaWeb.PedidoController do
 
   alias Tienda.Buscar.BuscarProducto
 
-  alias Tienda.Tablas.Comercio
+  alias Tienda.Comercio
 
   def mostrar_producto(conn, comercio) do
     productos = BuscarProducto.buscar_producto(comercio["id"])

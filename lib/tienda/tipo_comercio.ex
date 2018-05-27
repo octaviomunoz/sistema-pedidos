@@ -1,4 +1,4 @@
-defmodule Tienda.Tablas.TipoComercio do
+defmodule Tienda.TipoComercio do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -6,7 +6,7 @@ defmodule Tienda.Tablas.TipoComercio do
   schema "tipocomercio" do
     field :nombre, :string
 
-    has_many :comercio, Tienda.Tablas.Comercio
+    has_many :comercio, Tienda.Comercio
 
     timestamps()
   end

@@ -1,4 +1,4 @@
-defmodule Tienda.Tablas.Detalle do
+defmodule Tienda.Detalle do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -9,8 +9,8 @@ defmodule Tienda.Tablas.Detalle do
     field :comentarioCliente, :string
     field :precioParcial, :integer
 
-    belongs_to :solicitud, Tienda.Tablas.Solicitud
-    belongs_to :producto, Tienda.Tablas.Producto
+    belongs_to :solicitud, Tienda.Solicitud
+    belongs_to :producto, Tienda.Producto
 
     timestamps()
   end

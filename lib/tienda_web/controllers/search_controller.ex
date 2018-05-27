@@ -3,10 +3,10 @@ defmodule TiendaWeb.SearchController do
 
   alias Tienda.Buscar.BuscarComercio
 
-  alias Tienda.Tablas.Continente
-  alias Tienda.Tablas.Pais
-  alias Tienda.Tablas.Ciudad
-  alias Tienda.Tablas.Comercio
+  alias Tienda.Continente
+  alias Tienda.Pais
+  alias Tienda.Ciudad
+  alias Tienda.Comercio
 
   def elegircontinente(conn, _params) do
     continentes = BuscarComercio.nombre_continente()

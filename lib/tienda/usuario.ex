@@ -1,4 +1,4 @@
-defmodule Tienda.Tablas.Usuario do
+defmodule Tienda.Usuario do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -11,7 +11,7 @@ defmodule Tienda.Tablas.Usuario do
     field :nombres, :string
     field :telefono, :string
 
-    has_many :solicitud, Tienda.Tablas.Solicitud
+    has_many :solicitud, Tienda.Solicitud
 
     timestamps()
   end
@@ -25,7 +25,5 @@ defmodule Tienda.Tablas.Usuario do
     |> unique_constraint(:email)
   end
 
-  def changeset(usuario, params \\ %{}) do
-    cast(usuario, params, [:email, :password])
-  end
+
 end

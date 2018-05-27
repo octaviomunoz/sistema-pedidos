@@ -1,4 +1,4 @@
-defmodule Tienda.Tablas.Producto do
+defmodule Tienda.Producto do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -15,8 +15,8 @@ defmodule Tienda.Tablas.Producto do
     field :urlVideo, :string
 
 
-    belongs_to :comercio, Tienda.Tablas.Comercio
-    has_many :detalle, Tienda.Tablas.Detalle
+    belongs_to :comercio, Tienda.Comercio
+    has_many :detalle, Tienda.Detalle
 
 
     timestamps()

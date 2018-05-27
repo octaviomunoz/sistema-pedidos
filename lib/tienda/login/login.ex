@@ -3,7 +3,7 @@ defmodule Tienda.Login.Login do
   import Ecto.Query, warn: false
   alias Tienda.Repo
 
-  alias Tienda.Tablas.Usuario
+  alias Tienda.Usuario
 
 
   def login_usuario(datoslogeo) do
