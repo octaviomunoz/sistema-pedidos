@@ -11,7 +11,10 @@ defmodule TiendaWeb.SearchController do
   def elegircontinente(conn, _params) do
     continentes = BuscarComercio.nombre_continente()
     nombre = BuscarComercio.change_continente(%Continente{})
-    render conn, "bucontinente.html", continentes: continentes, nombre: nombre
+
+    usuario = get_session(conn, :usuario_actual)
+
+    render conn, "bucontinente.html", continentes: continentes, nombre: nombre, usuario: usuario
   end
 
 

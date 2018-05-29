@@ -2,9 +2,21 @@
 
 <%= form_for @datos, login_path(@conn, :validacion), fn f -> %>
 
-  <%= email_input f, :email %>
-  <%= password_input f, :password %>
+  <div>
+    <%= label f, "Email" %>
+  </div>
+  <div>
+    <%= email_input f, :email %>
+  </div>
+  <div>
+    <%= label f, "Contraseña" %>
+  </div>
+  <div>
+    <%= password_input f, :password %>
+  </div>
 
   <%= submit "Submit" %>
+
+  <%= link "Atras", to: page_path(@conn, :index)%>
 
 <%end%>
