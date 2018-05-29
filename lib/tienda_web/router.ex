@@ -20,7 +20,7 @@ defmodule TiendaWeb.Router do
     pipe_through :browser # Use the default browser stack
 
 
-    get "/", PageController, :index    
+    get "/", PageController, :index
 
     get "/login", LoginController, :loginusuario
     post "/validacion", LoginController, :validacion
@@ -31,6 +31,8 @@ defmodule TiendaWeb.Router do
     post "/search/comercio", SearchController, :elegircomercio
 
     post "/productos", PedidoController, :mostrar_producto
+
+    get "/carro", CarroController, :carro_compra
 
   end
 
