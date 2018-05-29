@@ -14,7 +14,7 @@ defmodule Tienda.Login.Login do
     else
       case verificar_password(datoslogeo["password"], user.password) do
         {:ok} ->
-          {:ok, mensaje: "Usuario Validado"}
+          {:ok, user: user}
         {:error} ->
           {:error, mensaje: "Contraseña Incorrecta"}
       end
@@ -29,8 +29,5 @@ defmodule Tienda.Login.Login do
     end
   end
 
-  def change_usuario(%Usuario{} = usuario) do
-    Usuario.changeset(usuario, %{})
-  end
 
 end

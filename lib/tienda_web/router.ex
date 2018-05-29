@@ -13,14 +13,18 @@ defmodule TiendaWeb.Router do
     plug :accepts, ["json"]
   end
 
+
+
+
   scope "/", TiendaWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+
+    get "/", PageController, :index    
 
     get "/login", LoginController, :loginusuario
     post "/validacion", LoginController, :validacion
-    
+
     get "/search/continente", SearchController, :elegircontinente
     post "/search/pais", SearchController, :elegirpais
     post "/search/ciudad", SearchController, :elegirciudad

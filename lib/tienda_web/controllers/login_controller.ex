@@ -5,22 +5,27 @@ defmodule TiendaWeb.LoginController do
   alias Tienda.Login.Login
 
   def loginusuario(conn, _params) do
-    datos = Login.change_usuario(%Usuario{})
+    datos = Usuario.usuario_change(%Usuario{})
     render conn, "login.html", datos: datos
   end
 
-
   def  validacion(conn, datos) do
-    IO.inspect(label: datos["usuario"])
-    #Login.login_usuario(datos["usuario"])
     case Login.login_usuario(datos["usuario"]) do
-      {:ok, mensaje: mensaje} ->
-        render conn, "validacion.html", mensaje: mensaje
+      {:ok, user: user} ->
+        ok_login(conn, user)
       {:error, mensaje: mensaje} ->
-        render conn, "validacion.html", mensaje: mensaje
+        conn
+        |> put_flash(:error, mensaje)
+        |> redirect to: "/login"
     end
 
   end
 
-
+  defp ok_login(conn, user) do
+    conn
+    |> put_flash(:info, "Inicio de Secion Correcto")
+    |> put_session(:usuario_actual, user.id)
+    |> redirect to: "/"
+  end
+  
 end

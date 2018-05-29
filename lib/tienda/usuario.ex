@@ -1,6 +1,10 @@
 defmodule Tienda.Usuario do
+
+
   use Ecto.Schema
+
   import Ecto.Changeset
+  alias Tienda.Solicitud
 
 
   schema "usuario" do
@@ -11,18 +15,23 @@ defmodule Tienda.Usuario do
     field :nombres, :string
     field :telefono, :string
 
-    has_many :solicitud, Tienda.Solicitud
+    has_many :solicitud, Solicitud
 
     timestamps()
   end
 
   @doc false
-  def changeset(usuario, attrs) do
+  def changeset(%__MODULE__{} = usuario, attrs) do
     usuario
     |> cast(attrs, [:email, :nombres, :apellido, :password, :telefono, :foto_perfil])
     |> validate_required([:email, :nombres, :apellido, :password, :telefono])
-    |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
+  end
+  
+
+  def usuario_change(%__MODULE__{} = usuario, attrs \\ %{}) do
+    usuario
+    |> changeset(attrs)
   end
 
 
