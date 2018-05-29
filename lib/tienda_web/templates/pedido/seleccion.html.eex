@@ -20,6 +20,9 @@
 <%end%>
 
 <%= form_for @detalle, pedido_path(@conn, :agregar_carro), fn f -> %>
+  <label> Ingrese Cantidad</label>
   <%= number_input f, :cantidaProducto %>
+  <%= submit "Agregar al Carrito" %>
 
+  <%= link "Atras", to: pedido_path(@conn, :mostrar_producto, %{id: @producto.comercio_id}), method: :post %>
 <%end%>
