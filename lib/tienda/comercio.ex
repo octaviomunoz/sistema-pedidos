@@ -47,4 +47,10 @@ defmodule Tienda.Comercio do
     |> cast(attrs, [:nombre, :email, :telefono, :calleDireccion, :numeroDireccion, :fax, :urlSitio, :coordenadasLocalizacionGeografica, :mapaLocalizacionGeografica, :valorMinEntregaComida, :porcentajeDescuentoGeneral, :mensajeGeneral, :mensajeDescuento, :visibleComercio, :mensajeUsuarioSolicitud, :mensajeUsuarioCancelacionSolicitud, :fotoPortada, :comercioActivo, :condiciones, :tipoPagoSolicitud, :redSocialFacebook, :redSocialInstagram, :redSocialLinkedin, :redSocialWhatsapp])
     |> validate_required([:nombre, :email, :telefono, :calleDireccion, :valorMinEntregaComida, :porcentajeDescuentoGeneral, :mensajeGeneral, :mensajeDescuento, :visibleComercio, :mensajeUsuarioSolicitud, :mensajeUsuarioCancelacionSolicitud, :comercioActivo, :condiciones, :tipoPagoSolicitud])
   end
+
+
+  def comercio_change(%__MODULE__{} = comercio, attrs \\ %{}) do
+    comercio
+    |> changeset(attrs)
+  end
 end

@@ -16,7 +16,7 @@ defmodule TiendaWeb.LoginController do
       {:error, mensaje: mensaje} ->
         conn
         |> put_flash(:error, mensaje)
-        |> redirect to: "/login"
+        |> redirect(to: "/login")
     end
 
   end
@@ -25,7 +25,7 @@ defmodule TiendaWeb.LoginController do
     conn
     |> put_flash(:info, "Inicio de Sesion Correcto")
     |> put_session(:usuario_actual, user.id)
-    |> redirect to: "/"
+    |> redirect(to: "/")
   end
 
 end

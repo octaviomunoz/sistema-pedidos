@@ -18,8 +18,6 @@ defmodule TiendaWeb.SearchController do
     render conn, "bucontinente.html", continentes: continentes, nombre: nombre
   end
 
-
-
   def elegirpais(conn, con) do
     continente = BuscarComercio.get_continente!(con["continente"]["nombre"])
     paises = BuscarComercio.nombre_pais(continente.id)
