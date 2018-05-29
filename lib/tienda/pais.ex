@@ -20,4 +20,9 @@ defmodule Tienda.Pais do
     |> cast(attrs, [:nombre, :continente_id])
     |> validate_required([:nombre, :continente_id])
   end
+
+  def pais_change(%__MODULE__{} = pais, attrs \\ %{}) do
+    pais
+    |> changeset(attrs)
+  end
 end

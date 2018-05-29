@@ -19,4 +19,9 @@ defmodule Tienda.Ciudad do
     |> cast(attrs, [:nombre, :codigoTelefono, :pais_id])
     |> validate_required([:nombre, :codigoTelefono, :pais_id])
   end
+
+  def ciudad_change(%__MODULE__{} = ciudad, attrs \\ %{}) do
+    ciudad
+    |> changeset(attrs)
+  end
 end

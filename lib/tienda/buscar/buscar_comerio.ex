@@ -3,11 +3,12 @@ defmodule Tienda.Buscar.BuscarComercio do
   import Ecto.Query, warn: false
   alias Tienda.Repo
 
-  alias Tienda.Continente
-  alias Tienda.Pais
-  alias Tienda.Ciudad
-  alias Tienda.Comercio
-
+  alias Tienda.{
+    Continente,
+    Pais,
+    Ciudad,
+    Comercio
+  }
 
 
   def nombre_continente() do
@@ -63,20 +64,4 @@ defmodule Tienda.Buscar.BuscarComercio do
     Repo.get(Comercio, id)
   end
 
-
-  def change_continente(%Continente{} = continente) do
-    Continente.changeset(continente, %{})
-  end
-
-  def change_pais(%Pais{} = pais) do
-    Pais.changeset(pais, %{})
-  end
-
-  def change_ciudad(%Ciudad{} = ciudad) do
-    Ciudad.changeset(ciudad, %{})
-  end
-
-  def change_comercio(%Comercio{} = comercio) do
-    Comercio.changeset(comercio, %{})
-  end
 end

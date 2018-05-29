@@ -17,4 +17,10 @@ defmodule Tienda.Continente do
     |> cast(attrs, [:nombre])
     |> validate_required([:nombre])
   end
+
+
+  def continente_change(%__MODULE__{} = continente, attrs \\ %{}) do
+    continente
+    |> changeset(attrs)
+  end
 end
