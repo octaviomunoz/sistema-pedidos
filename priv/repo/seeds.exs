@@ -11,46 +11,18 @@
 # and so on) as they will fail if something goes wrong.
 
 
-alias Tienda.Tablas.Continente
+alias Tienda.Continente
 Tienda.Repo.insert!(%Continente{
   nombre: "America"
 })
 
-Tienda.Repo.insert!(%Continente{
-  nombre: "Europa"
-})
-
-Tienda.Repo.insert!(%Continente{
-  nombre: "Africa"
-})
-
-Tienda.Repo.insert!(%Continente{
-  nombre: "Asia"
-})
-
-Tienda.Repo.insert!(%Continente{
-  nombre: "Oceania"
-})
-
-
-alias Tienda.Tablas.Pais
+alias Tienda.Pais
 Tienda.Repo.insert!(%Pais{
   nombre: "Chile",
   continente_id: 1
-})
+  })
 
-Tienda.Repo.insert!(%Pais{
-  nombre: "Argentina",
-  continente_id: 1
-})
-
-Tienda.Repo.insert!(%Pais{
-  nombre: "Peru",
-  continente_id: 1
-})
-
-
-alias Tienda.Tablas.Ciudad
+alias Tienda.Ciudad
 Tienda.Repo.insert!(%Ciudad{
   nombre: "Curico",
   codigoTelefono: "75",
@@ -64,7 +36,7 @@ Tienda.Repo.insert!(%Ciudad{
 })
 
 
-alias Tienda.Tablas.Usuario
+alias Tienda.Usuario
 Tienda.Repo.insert!(%Usuario{
   nombres: "Primero",
   apellido: "pri",
@@ -90,7 +62,7 @@ Tienda.Repo.insert!(%Usuario{
 })
 
 
-alias Tienda.Tablas.Representante
+alias Tienda.Representante
 Tienda.Repo.insert!(%Representante{
   email: "roberto@ejemplo.com",
   nombre: "Roberto",
@@ -100,7 +72,7 @@ Tienda.Repo.insert!(%Representante{
   })
 
 
-alias Tienda.Tablas.TipoComercio
+alias Tienda.TipoComercio
 Tienda.Repo.insert!(%TipoComercio{
   nombre: "restaurante"
 })
@@ -110,14 +82,14 @@ Tienda.Repo.insert!(%TipoComercio{
 })
 
 
-alias Tienda.Tablas.CalificacionComercio
+alias Tienda.CalificacionComercio
 Tienda.Repo.insert!(%CalificacionComercio{
   sumaNotaCliente: 0,
   totalComentario: 0,
   })
 
 
-alias Tienda.Tablas.Comercio
+alias Tienda.Comercio
 Tienda.Repo.insert!(%Comercio{
   nombre: "Don Juan",
   email: "donjuan@ejemplo.Comercio",
@@ -144,7 +116,7 @@ Tienda.Repo.insert!(%Comercio{
   })
 
   Tienda.Repo.insert!(%Comercio{
-    nombre: "Don Eleodoro",
+    nombre: "Comercio2",
     email: "donjuan@ejemplo.Comercio",
     telefono: 7654321,
     calleDireccion: "1 sur",
@@ -169,7 +141,7 @@ Tienda.Repo.insert!(%Comercio{
     })
 
     Tienda.Repo.insert!(%Comercio{
-      nombre: "Don Emilio",
+      nombre: "Comercio3",
       email: "donjuan@ejemplo.Comercio",
       telefono: 7654321,
       calleDireccion: "1 sur",
@@ -188,14 +160,14 @@ Tienda.Repo.insert!(%Comercio{
       tipoPagoSolicitud: 1,
       representante_id: 1,
       pais_id: 1,
-      ciudad_id: 2,
+      ciudad_id: 1,
       tipocomercio_id: 1,
       calificacioncomercio_id: 1
       })
 
 
 
-alias Tienda.Tablas.Producto
+alias Tienda.Producto
 Tienda.Repo.insert!(%Producto{
   nombre: "producto1",
   ingrediente: "ingredientes1",
@@ -236,3 +208,44 @@ Tienda.Repo.insert!(%Producto{
   mensajeDescuento: "mensaje4",
   comercio_id: 1
   })
+
+  Tienda.Repo.insert!(%Producto{
+    nombre: "producto1",
+    ingrediente: "ingredientes1",
+    precioUnitario: 3000,
+    activo: true,
+    porcentajeDescuento: 0,
+    mensajeDescuento: "mensaje1",
+    comercio_id: 2
+    })
+
+
+  Tienda.Repo.insert!(%Producto{
+    nombre: "producto2",
+    ingrediente: "ingredientes2",
+    precioUnitario: 2300,
+    activo: true,
+    porcentajeDescuento: 0,
+    mensajeDescuento: "mensaje2",
+    comercio_id: 2
+    })
+
+  Tienda.Repo.insert!(%Producto{
+    nombre: "producto3",
+    ingrediente: "ingredientes3",
+    precioUnitario: 4500,
+    activo: true,
+    porcentajeDescuento: 0,
+    mensajeDescuento: "mensaje3",
+    comercio_id: 3
+    })
+
+  Tienda.Repo.insert!(%Producto{
+    nombre: "producto4",
+    ingrediente: "ingredientes4",
+    precioUnitario: 1700,
+    #activo: true,
+    porcentajeDescuento: 15,
+    mensajeDescuento: "mensaje4",
+    comercio_id: 2
+    })
