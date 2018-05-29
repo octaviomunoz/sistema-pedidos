@@ -12,6 +12,7 @@ defmodule Tienda.Repo.Migrations.CreateSolicitud do
       add :tokenVerificacion, :string
       add :comentarioCliente, :string
       add :notaPromedioSolicitud, :integer
+      add :completa, :boolean, default: false, null: false
       add :comercio_id, references(:comercio, on_delete: :nothing)
       add :usuario_id, references(:usuario, on_delete: :nothing)
 

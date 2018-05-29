@@ -13,6 +13,7 @@ defmodule Tienda.Solicitud do
     field :tipoTokenVerificacion, :integer
     field :tokenVerificacion, :string
     field :precioTotal, :integer
+    field :completa, :boolean
 
 
     belongs_to :comercio, Tienda.Comercio
@@ -27,6 +28,6 @@ defmodule Tienda.Solicitud do
   def changeset(solicitud, attrs) do
     solicitud
     |> cast(attrs, [:fechaSolicitud, :horaSolicitud, :precioEnvio, :precioTotal, :horaEntrega, :tipoTokenVerificacion, :tokenVerificacion, :comentarioCliente, :notaPromedioSolicitud])
-    |> validate_required([:fechaSolicitud, :horaSolicitud, :precioEnvio, :precioTotal, :horaEntrega, :tipoTokenVerificacion, :tokenVerificacion, :notaPromedioSolicitud])
+    |> validate_required([:precioEnvio, :precioTotal])
   end
 end
