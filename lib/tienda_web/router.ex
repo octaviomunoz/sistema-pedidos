@@ -31,6 +31,8 @@ defmodule TiendaWeb.Router do
     post "/search/comercio", SearchController, :elegircomercio
 
     post "/productos", PedidoController, :mostrar_producto
+    post "/eleccion", PedidoController, :agregar_producto
+    post "/eleccion/agregar_carro", PedidoController, :agregar_carro
 
     get "/carro", CarroController, :carro_compra
 

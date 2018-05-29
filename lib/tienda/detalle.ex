@@ -19,6 +19,12 @@ defmodule Tienda.Detalle do
   def changeset(detalle, attrs) do
     detalle
     |> cast(attrs, [:cantidaProducto, :comentarioCliente, :precioParcial, :calificacion])
-    |> validate_required([:cantidaProducto, :precioParcial, :calificacion])
+    |> validate_required([:cantidaProducto, :precioParcial])
+  end
+
+
+  def detalle_change(%__MODULE__{} = detalle, attrs \\ %{}) do
+    detalle
+    |> changeset(attrs)
   end
 end

@@ -1,0 +1,25 @@
+<h2> <%= @producto.nombre %> </h2>
+
+<div>
+  Ingredientes :  <%= @producto.ingrediente %>
+</div>
+<div>
+  Precio Normal = <%= @producto.precioUnitario %>
+</div>
+<%= if @producto.porcentajeDescuento > 0  do %>
+  <div>
+    Descuento = <%= @producto.porcentajeDescuento %> %
+  </div>
+  <div>
+    Precio de Descuento = <%=  @producto.precioUnitario * (1 - (@producto.porcentajeDescuento/100)) %>
+  </div>
+  <div>
+    Descuento    <%= @producto.mensajeDescuento %>
+  </div>
+
+<%end%>
+
+<%= form_for @detalle, pedido_path(@conn, :agregar_carro), fn f -> %>
+  <%= number_input f, :cantidaProducto %>
+
+<%end%>

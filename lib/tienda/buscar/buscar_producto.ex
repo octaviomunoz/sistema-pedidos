@@ -12,4 +12,8 @@ defmodule Tienda.Buscar.BuscarProducto do
 
     Repo.all(produc)
   end
+
+  def get_producto(id_producto) do
+    Repo.get(Producto, id_producto)
+  end
 end
