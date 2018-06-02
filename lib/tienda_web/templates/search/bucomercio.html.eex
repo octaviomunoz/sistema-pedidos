@@ -20,7 +20,7 @@
         <td><%= elem comercio, 0 %></td>
 
           <td>
-            <span><%= link "Seleccionar Comercio", to: pedido_path(@conn, :mostrar_producto, %{id: elem(comercio, 0)}), method: :post %></span>
+            <span><%= link "Seleccionar Comercio", to: carro_path(@conn, :mostrar_producto, %{id: elem(comercio, 0)}), method: :post %></span>
           </td>
       </tr>
     <%end%>

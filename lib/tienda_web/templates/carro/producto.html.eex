@@ -18,7 +18,7 @@
         <td><%= elem(producto, 3) %></td>
 
         <td>
-          <span><%= link "Seleccionar Producto", to: pedido_path(@conn, :agregar_producto, %{id: elem(producto, 0)}), method: :post %></span>
+          <span><%= link "Seleccionar Producto", to: carro_path(@conn, :agregar_producto, %{id: elem(producto, 0)}), method: :post %></span>
         </td>
       </tr>
     <%end%>

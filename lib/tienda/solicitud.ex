@@ -25,9 +25,15 @@ defmodule Tienda.Solicitud do
   end
 
   @doc false
-  def changeset(solicitud, attrs) do
+  def changeset(%__MODULE__{} = solicitud, attrs \\ %{}) do
     solicitud
-    |> cast(attrs, [:fechaSolicitud, :horaSolicitud, :precioEnvio, :precioTotal, :horaEntrega, :tipoTokenVerificacion, :tokenVerificacion, :comentarioCliente, :notaPromedioSolicitud])
-    |> validate_required([:precioEnvio, :precioTotal])
+    |> cast(attrs, [:fechaSolicitud, :horaSolicitud, :precioEnvio, :precioTotal, :horaEntrega, :tipoTokenVerificacion, :tokenVerificacion, :comentarioCliente, :notaPromedioSolicitud, :completa])
+    |> validate_required([:precioEnvio])
   end
+
+  def solicitud_change(%__MODULE__{} = solicitud, attrs \\ %{}) do
+    solicitud
+    |> changeset(attrs)
+  end
+
 end
