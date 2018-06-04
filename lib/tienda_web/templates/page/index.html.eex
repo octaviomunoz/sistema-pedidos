@@ -1,4 +1,4 @@
 
 
-<h2><%= link "Iniciar Sesion", to: login_path(@conn, :loginusuario) %></h2>
+<h2><%= link "Iniciar Sesion", to: login_path(@conn, :login_usuario) %></h2>
 <h2><%= link "Buscar Comercio", to: search_path(@conn, :elegircontinente) %></h2>

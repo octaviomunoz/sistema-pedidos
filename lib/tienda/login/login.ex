@@ -8,7 +8,7 @@ defmodule Tienda.Login.Login do
 
   def login_usuario(datoslogeo) do
     user = Repo.get_by(Usuario, email: datoslogeo["email"])
-    #IO.inspect(label: user)
+
     if user == nil do
       {:error, mensaje: "email ingresado incorrecto"}
     else
@@ -28,6 +28,5 @@ defmodule Tienda.Login.Login do
       {:error}
     end
   end
-
 
 end

@@ -12,18 +12,39 @@ defmodule Tienda.Pedidos.Pedidos do
   #Calcula el precio parcial de un detalle
   def get_precio_parcial(id_producto, cantidad) do
     producto = Repo.get(Producto, id_producto)
+    cantidad_producto = String.to_integer(cantidad)
 
-    cantidad * (producto.precioUnitario * (1 - (producto.porcentajeDescuento / 100))) 
+    precio_parcial = cantidad_producto * producto.precioUnitario * (1 - (producto.porcentajeDescuento/100))
+    trunc(precio_parcial)
   end
 
-  def nueva_solicitud(id_solicitud) do
-    Solicitud.changeset(%Solicitud{precioEnvio: 100, completa: false})
+  def nueva_solicitud(id_usuario, id_producto) do
+    producto = Repo.get(Producto, id_producto)
+    Solicitud.changeset(%Solicitud{usuario_id: id_usuario, comercio_id: producto.comercio_id, precioEnvio: 100, completa: false})
     |> Repo.insert()
   end
 
 
-  def completar_solicitud(%Solicitud{} = solicitud) do
-    Solicitud.changeset(%Solicitud{}, completa: :true)
+  def completar_solicitud(id, solicitud_completa) do
+    if Repo.get_by(Solicitud, :completa) == false do
+      Solicitud.changeset(%Solicitud{completa: true })
+      |> Repo.update()
+    end
+
+  end
+
+  def nuevo_detalle(id_solicitud, detalle) do
+    #IO.inspect(label: detalle)
+
+    precio_parcial = get_precio_parcial(detalle["producto"], detalle["detalle"]["cantidaProducto"])
+    IO.inspect(label: "precio_parcial")
+    IO.inspect(label: precio_parcial)
+    Detalle.changeset(%Detalle{
+      solicitud_id: id_solicitud,
+      producto_id: String.to_integer(detalle["producto"]),
+      cantidaProducto: String.to_integer(detalle["detalle"]["cantidaProducto"]),
+      comentarioCliente: detalle["comentario"],
+      precioParcial: precio_parcial})
     |> Repo.insert()
   end
 

@@ -4,7 +4,7 @@ defmodule TiendaWeb.LoginController do
   alias Tienda.Usuario
   alias Tienda.Login.Login
 
-  def loginusuario(conn, _params) do
+  def login_usuario(conn, _params) do
     datos = Usuario.usuario_change(%Usuario{})
     render conn, "login.html", datos: datos
   end
@@ -18,7 +18,6 @@ defmodule TiendaWeb.LoginController do
         |> put_flash(:error, mensaje)
         |> redirect(to: "/login")
     end
-
   end
 
   defp ok_login(conn, user) do
@@ -27,5 +26,6 @@ defmodule TiendaWeb.LoginController do
     |> put_session(:usuario_actual, user.id)
     |> redirect(to: "/")
   end
+
 
 end

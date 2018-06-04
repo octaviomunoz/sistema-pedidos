@@ -20,7 +20,7 @@ defmodule TiendaWeb.CarroController do
     if solicitud != nil do
       conn
       |> put_flash(:info, "No se hecho niguna solicitud")
-      |> redirect to: "/"
+      |> redirect(to: "/")
     end
   end
 
@@ -33,29 +33,41 @@ defmodule TiendaWeb.CarroController do
   def agregar_producto(conn, producto) do
     producto = BuscarProducto.get_producto(producto["id"])
     detalle = Detalle.detalle_change(%Detalle{})
+
     render conn, "seleccion.html", producto: producto, detalle: detalle
   end
 
   def agregar_carro(conn, detalle) do
     IO.inspect(label: detalle)
     id_solicitud = get_session(conn, :solicitud_id)
-    IO.inspect(label: "ID DE LA SOLICITUD")
-    IO.inspect(label: id_solicitud)
-    IO.inspect(label: "*****END*****")
+    id_usuario = get_session(conn, :usuario_actual)
 
-
-    if id_solicitud == nil do
-      solicitud = Pedidos.nueva_solicitud(id_solicitud)
-      IO.inspect(label: elem(solicitud, 1).id)
-      conn = put_session(conn, :solicitud_id, elem(solicitud, 1).id)
+    #Verifica que exita un usuario
+    if id_usuario == nil do
+      redirect(conn, to: "/login")
     end
+
+    #Verifica que exista una solicitud
+    if id_solicitud == nil do
+      solicitud = Pedidos.nueva_solicitud(id_usuario, detalle["comercio"])
+      conn = put_session(conn, :solicitud_id, elem(solicitud, 1).id)
+      id_solicitud = elem(solicitud, 1).id
+    end
+
+    #Guarda el detalle
+    IO.inspect(label: detalle["producto"])
+
+    deta = Pedidos.nuevo_detalle(id_solicitud, detalle)
+
+
+
+
 
 
     conn
-    |> put_flash(:ok, "Pedido realizado con exito")
+    |> put_flash(:info, "Pedido realizado con exito")
     |> redirect(to: "/")
-
-
   end
+
 
 end

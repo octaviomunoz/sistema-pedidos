@@ -19,10 +19,13 @@
 
 <%end%>
 
-<%= form_for @detalle, carro_path(@conn, :agregar_carro), fn f -> %>
+<%= form_for @detalle, carro_path(@conn, :agregar_carro, producto: @producto.id, comercio: @producto.comercio_id), fn f -> %>
+
   <label> Ingrese Cantidad</label>
   <%= number_input f, :cantidaProducto %>
   <%= submit "Agregar al Carrito" %>
+
+  <%= textarea f, :comentario %>
 
   <%= link "Atras", to: carro_path(@conn, :mostrar_producto, %{id: @producto.comercio_id}), method: :post %>
 <%end%>
