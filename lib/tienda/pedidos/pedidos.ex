@@ -48,6 +48,20 @@ defmodule Tienda.Pedidos.Pedidos do
     |> Repo.insert()
   end
 
+  def cantidad_pedido(id_solicitud) do
+    precio = from pr in Detalle,
+      select: pr.precioParcial
+    list_precio = Repo.all(precio)
+    IO.inspect(label: list_precio)
+    precio_total = 0
+    for pre <- list_precio do
+      IO.inspect(label: pre)
+      precio_total = precio_total + pre
+    end
+    IO.inspect(label: precio_total)
+    precio_total
+  end
+
 
 
 end

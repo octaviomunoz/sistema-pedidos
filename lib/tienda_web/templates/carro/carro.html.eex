@@ -1,1 +1,3 @@
 <h2> Carro </h2>
+
+Precio Total Solicitud <%= @precio_total %>

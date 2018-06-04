@@ -13,11 +13,13 @@ defmodule TiendaWeb.CarroController do
     solicitud = get_session(conn, :solicitud_id)
     existe_solicitud(conn, solicitud)
 
-    render conn, "carro.html"
+    precio_total = Pedidos.cantidad_pedido(solicitud)
+
+    render conn, "carro.html", precio_total: precio_total
   end
 
   defp existe_solicitud(conn, solicitud) do
-    if solicitud != nil do
+    if solicitud == nil do
       conn
       |> put_flash(:info, "No se hecho niguna solicitud")
       |> redirect(to: "/")
