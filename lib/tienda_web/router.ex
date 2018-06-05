@@ -35,6 +35,7 @@ defmodule TiendaWeb.Router do
     post "/eleccion/agregar_carro", CarroController, :agregar_carro
 
     get "/carro", CarroController, :carro_compra
+    post "/carro/eliminar", CarroController, :eliminar_detalle
 
   end
 

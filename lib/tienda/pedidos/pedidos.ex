@@ -75,11 +75,21 @@ defmodule Tienda.Pedidos.Pedidos do
       join: p in Producto, where: p.id == d.producto_id
 
     detalles = from [d, p] in detalles,
-      select: {p.nombre, p.precioUnitario, p.porcentajeDescuento, d.cantidaProducto, d.precioParcial}
+      select: {p.nombre, p.precioUnitario, p.porcentajeDescuento, d.cantidaProducto, d.precioParcial, d.id}
 
     Repo.all(detalles)
   end
 
+  def borrar_detalle(id_detalle) do
+    cam = from d in Detalle,
+      select: {d.solicitud_id, d.precioParcial}
+    solicitud = Repo.get(cam, id_detalle)
 
+    detalle = Repo.get(Detalle, id_detalle)
+
+    cambio_solicitud_precio_total(elem(solicitud, 0), -(elem(solicitud, 1)))
+
+    Repo.delete(detalle)
+  end
 
 end

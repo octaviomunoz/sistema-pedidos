@@ -25,7 +25,7 @@
 
 
         <td>
-
+          <span><%= link "Eliminar", to: carro_path(@conn, :eliminar_detalle, %{id: elem(detalle, 5)}), method: :pos%></span>
         </td>
       </tr>
     <%end%>

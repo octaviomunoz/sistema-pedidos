@@ -68,5 +68,16 @@ defmodule TiendaWeb.CarroController do
     |> redirect(to: "/")
   end
 
+  def eliminar_detalle(conn, id_detalle) do
+    IO.inspect(label: id_detalle["id"])
+    detalle_id = String.to_integer(id_detalle["id"])
+
+    Pedidos.borrar_detalle(detalle_id)
+
+    conn
+    |> put_flash(:info, "Producto Eliminado")
+    |> redirect(to: "/carro")
+  end
+
 
 end
