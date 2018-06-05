@@ -4,6 +4,8 @@ defmodule TiendaWeb.PageController do
 
 
     def index(conn, _params) do
-      render conn, "index.html"
+      solicitud = get_session(conn, :solicitud_id)
+
+      render conn, "index.html", solicitud: solicitud
     end
 end

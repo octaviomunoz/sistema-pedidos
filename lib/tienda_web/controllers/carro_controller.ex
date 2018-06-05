@@ -13,9 +13,11 @@ defmodule TiendaWeb.CarroController do
     solicitud = get_session(conn, :solicitud_id)
     existe_solicitud(conn, solicitud)
 
-    precio_total = Pedidos.cantidad_pedido(solicitud)
+    precio_total = Pedidos.precioTotal(solicitud)
 
-    render conn, "carro.html", precio_total: precio_total
+    detalle = Pedidos.get_detalle(solicitud)
+
+    render conn, "carro.html", detalle: detalle, precio_total: precio_total
   end
 
   defp existe_solicitud(conn, solicitud) do
@@ -60,11 +62,6 @@ defmodule TiendaWeb.CarroController do
     IO.inspect(label: detalle["producto"])
 
     deta = Pedidos.nuevo_detalle(id_solicitud, detalle)
-
-
-
-
-
 
     conn
     |> put_flash(:info, "Pedido realizado con exito")

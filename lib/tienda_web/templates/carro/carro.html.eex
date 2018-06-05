@@ -1,3 +1,34 @@
 <h2> Carro </h2>
 
-Precio Total Solicitud <%= @precio_total %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Precio Parcial</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for detalle <- @detalle do %>
+      <tr>
+        <td><%= elem(detalle, 0) %></td>
+        <%= if elem(detalle, 2) > 0 do %>
+        <td><%= elem(detalle, 1) * (1 - elem(detalle, 2)/100)%>
+        <%= else %>
+        <td><%= elem(detalle, 1) %></td>
+        <%end%>
+        <td><%= elem(detalle, 3) %></td>
+        <td><%= elem(detalle, 4) %></td>
+
+
+        <td>
+
+        </td>
+      </tr>
+    <%end%>
+    <h4> Total a pagar : <%= @precio_total %></h4>
+    <h4><span><%= link "Atras", to: page_path(@conn, :index)%></span></h4>
+  </tbody>

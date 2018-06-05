@@ -91,7 +91,7 @@ Tienda.Repo.insert!(%CalificacionComercio{
 
 alias Tienda.Comercio
 Tienda.Repo.insert!(%Comercio{
-  nombre: "Don Juan",
+  nombre: "Comercio1",
   email: "donjuan@ejemplo.Comercio",
   telefono: 7654321,
   calleDireccion: "1 sur",
@@ -244,7 +244,7 @@ Tienda.Repo.insert!(%Producto{
     nombre: "producto4",
     ingrediente: "ingredientes4",
     precioUnitario: 1700,
-    #activo: true,
+    activo: true,
     porcentajeDescuento: 15,
     mensajeDescuento: "mensaje4",
     comercio_id: 2
