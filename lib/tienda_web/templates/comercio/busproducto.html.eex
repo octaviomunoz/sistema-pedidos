@@ -1,0 +1,6 @@
+<h3>Busqueda de producto</h3>
+<%= form_for @producto, comercio_path(@conn, :obteniendo_producto), fn f -> %>
+  <%= text_input f, :nombre %>
+  <%= submit "Buscar" %>
+
+<%end%>

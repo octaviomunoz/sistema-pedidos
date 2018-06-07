@@ -28,4 +28,10 @@ defmodule Tienda.Producto do
     |> cast(attrs, [:nombre, :foto, :urlVideo, :ingrediente, :precioUnitario, :informacion, :activo, :porcentajeDescuento, :mensajeDescuento, :comercio_id])
     |> validate_required([:nombre, :ingrediente, :precioUnitario, :porcentajeDescuento, :mensajeDescuento, :comercio_id])
   end
+
+  def producto_change(%__MODULE__{} = producto, attrs \\ %{}) do
+    producto
+    |> changeset(attrs)
+  end
+
 end

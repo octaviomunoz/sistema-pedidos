@@ -38,6 +38,9 @@ defmodule TiendaWeb.Router do
     post "/carro/eliminar", CarroController, :eliminar_detalle
 
     resources "/usuario", UsuarioController, only: [:edit, :update, :new, :create, :show]
+
+    get "/busqueda", ComercioController, :busqueda_producto
+    post "/busqueda/comercios", ComercioController, :obteniendo_producto
   end
 
   # Other scopes may use custom stacks.

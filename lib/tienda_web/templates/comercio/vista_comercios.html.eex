@@ -1,0 +1,5 @@
+<h2>Comercios con <%= @producto %></h2>
+
+<%= render "list_comercio.html", comercios: @comercios, conn: @conn %>
+
+<h3> <%= link "Volver", to: page_path(@conn, :index) %></h3>

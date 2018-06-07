@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Calle</th>
+      <th>Numero</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for comercio <- @comercios do %>
+      <tr>
+        <td><%= elem(comercio, 1) %></td>
+        <td><%= elem(comercio, 2) %></td>
+        <td><%= elem(comercio, 3) %></td>
+
+          <td>
+            <span><%= link "Seleccionar Comercio", to: carro_path(@conn, :mostrar_producto, %{id: elem(comercio, 0)}), method: :post %></span>
+          </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
