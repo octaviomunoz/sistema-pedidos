@@ -1,0 +1,38 @@
+<%= form_for @changeset, @action, fn f -> %>
+
+  <div>
+    <%= label f, :nombres, "Nombres" %>
+    <div>
+      <%= text_input f, :nombres %>
+    </div>
+  </div>
+
+  <div>
+    <%= label f, :apellido, "Apellidos" %>
+    <div>
+      <%= text_input f, :apellido %>
+    </div>
+  </div>
+  <div>
+    <%= label f, :email, "email" %>
+    <div>
+      <%= email_input f, :email %>
+    </div>
+  </div>
+
+  <div>
+    <%= label f, :password, "Contraseña" %>
+    <div>
+      <%= password_input f, :password %>
+    </div>
+  </div>
+
+  <div>
+    <%= label f, :telefono, "Telefono" %>
+    <div>
+      <%= text_input f, :telefono %>
+    </div>
+  </div>
+
+<%= submit "Guardar" %>
+<%end%>

@@ -10,5 +10,5 @@
 
   <%= submit "Submit" %>
   <%= link "Atras", to: page_path(@conn, :index)%>
-  
+  <%= link "Registrase", to: usuario_path(@conn, :new) %>
 <%end%>
