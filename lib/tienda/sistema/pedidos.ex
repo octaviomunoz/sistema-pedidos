@@ -4,6 +4,7 @@ defmodule Tienda.Sistema.Pedidos do
   alias Tienda.Repo
 
   alias Tienda.{
+    Comercio,
     Producto,
     Solicitud,
     Detalle
@@ -23,12 +24,9 @@ defmodule Tienda.Sistema.Pedidos do
 
   @doc """
   Genera una nueva solicitud a la cual agregar los detalles
-
-  #Falta agregar la fecha en la que se produce
   """
-  def nueva_solicitud(id_usuario, id_producto) do
-    producto = Repo.get(Producto, id_producto)
-    Solicitud.changeset(%Solicitud{usuario_id: id_usuario, comercio_id: producto.comercio_id, precioEnvio: 100, completa: false, precioTotal: 0})
+  def nueva_solicitud(id_usuario, id_comercio) do
+    Solicitud.changeset(%Solicitud{usuario_id: id_usuario, comercio_id: id_comercio, precioEnvio: 100, completa: false, precioTotal: 0})
     |> Repo.insert()
   end
 
@@ -45,9 +43,9 @@ defmodule Tienda.Sistema.Pedidos do
     end
   end
 
-  @doc """
-  Devuelve si la solicitud esta completa
-  """
+
+  #Devuelve si la solicitud esta completa
+
   defp solicitud_completa(id_solicitud) do
     query = from s in Solicitud,
       select: s.completa
@@ -58,13 +56,20 @@ defmodule Tienda.Sistema.Pedidos do
   @doc """
   Crea un nuevo detalle
   """
-  def nuevo_detalle(id_solicitud, detalle) do
-    precio_parcial = get_precio_parcial(detalle["producto"], detalle["detalle"]["cantidaProducto"])
-    cambio_solicitud_precio_total(id_solicitud, precio_parcial)
+  def nuevo_detalle(id_solicitud, detalle, id_producto) do
+    IO.inspect(label: "PROBLEMAS 0001")
+    IO.inspect(label: id_solicitud)
+    IO.inspect(label: detalle)
+    IO.inspect(label: id_producto)
+
+    precio_parcial = get_precio_parcial(id_producto, detalle["cantidaProducto"])
+
+    cambio_solicitud_precio_total(precio_parcial, id_solicitud)
+
     Detalle.changeset(%Detalle{
       solicitud_id: id_solicitud,
-      producto_id: String.to_integer(detalle["producto"]),
-      cantidaProducto: String.to_integer(detalle["detalle"]["cantidaProducto"]),
+      producto_id: id_producto,
+      cantidaProducto: String.to_integer(detalle["cantidaProducto"]),
       comentarioCliente: detalle["comentario"],
       precioParcial: precio_parcial})
     |> Repo.insert()
@@ -74,12 +79,12 @@ defmodule Tienda.Sistema.Pedidos do
   Modifica el campo de precio total de una Solicitud
   Recibe como parametros la id de la solicitud y el valor a agregar
   """
-  def cambio_solicitud_precio_total(id_solicitud, precio_parcial) do
+  def cambio_solicitud_precio_total(precio_parcial, id_solicitud) do
     query = from s in Solicitud,
       where: s.id == ^id_solicitud,
       select: s.precioTotal
+
     pre = Repo.all(query)
-    IO.inspect(label: pre)
     precio_total =  List.first(pre)+ precio_parcial
 
     #Como se hacen cambios en la base de datos
@@ -125,9 +130,20 @@ defmodule Tienda.Sistema.Pedidos do
 
     detalle = Repo.get(Detalle, id_detalle)
 
-    cambio_solicitud_precio_total(elem(solicitud, 0), -(elem(solicitud, 1)))
+    cambio_solicitud_precio_total(-(elem(solicitud, 1)), elem(solicitud, 0))
 
     Repo.delete(detalle)
   end
 
+  @doc """
+  Retorna el id del comercio asociado a la solicitud
+  """
+  def get_comercio_id(id_solicitud) do
+    query = from s in Solicitud,
+      join: c in Comercio,
+        where: s.id == ^id_solicitud and s.comercio_id == c.id,
+        select: c.id
+
+    Repo.get(query, id_solicitud)
+  end
 end

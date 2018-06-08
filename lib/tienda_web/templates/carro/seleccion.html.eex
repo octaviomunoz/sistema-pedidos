@@ -38,7 +38,7 @@
       </tr>
 
     <%end%>
-    
+
   </tbody>
 </table>
 
@@ -58,5 +58,5 @@
     </div>
   </div>
 
-  <%= link "Atras", to: carro_path(@conn, :mostrar_producto, %{id: @producto.comercio_id}), method: :post %>
+  <%= link "Atras", to: carro_path(@conn, :mostrar_producto, %{comercio: @producto.comercio_id}), method: :post %>
 <%end%>
