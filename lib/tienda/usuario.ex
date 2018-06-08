@@ -25,9 +25,10 @@ defmodule Tienda.Usuario do
     usuario
     |> cast(attrs, [:email, :nombres, :apellido, :password, :telefono, :foto_perfil])
     |> validate_required([:email, :nombres, :apellido, :password, :telefono])
+    |> validate_length(:password, min: 6)
     |> unique_constraint(:email)
   end
-  
+
 
   def usuario_change(%__MODULE__{} = usuario, attrs \\ %{}) do
     usuario

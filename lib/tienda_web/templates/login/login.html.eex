@@ -1,14 +1,26 @@
-<h2> Login Usuario </h2>
+<div>
+  <%= form_for @datos, login_path(@conn, :validacion), fn f -> %>
 
-<%= form_for @datos, login_path(@conn, :validacion), fn f -> %>
+    <div>
+      <%= label f, "Email" %>
+      <div>
+        <%= email_input f, :email %>
+      </div>
+    </div>
 
-  <div><%= label f, "Email" %></div>
-  <div><%= email_input f, :email %></div>
+    <div>
+      <%= label f, "Contraseña" %></div>
+      <div>
+        <%= password_input f, :password %>
+      </div>
+    </div>
 
-  <div><%= label f, "Contraseña" %></div>
-  <div><%= password_input f, :password %></div>
+    <%= submit "Ingresar" %>
 
-  <%= submit "Submit" %>
-  <%= link "Atras", to: page_path(@conn, :index)%>
-  <%= link "Registrase", to: usuario_path(@conn, :new) %>
-<%end%>
+    <div>
+      <%= link "Atras", to: page_path(@conn, :index)%>
+      <%= link "Registrase", to: usuario_path(@conn, :new) %>
+    </div>
+
+  <%end%>
+</div>

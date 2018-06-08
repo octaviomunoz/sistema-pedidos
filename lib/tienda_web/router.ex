@@ -24,6 +24,7 @@ defmodule TiendaWeb.Router do
 
     get "/login", LoginController, :login_usuario
     post "/validacion", LoginController, :validacion
+    get "/finalizar-sesion", LoginController, :cerrar_sesion
 
     get "/search/continente", SearchController, :elegircontinente
     post "/search/pais", SearchController, :elegirpais

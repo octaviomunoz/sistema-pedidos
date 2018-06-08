@@ -51,6 +51,7 @@ defmodule Tienda.Pedidos.Pedidos do
       where: s.id == ^id_solicitud,
       select: s.precioTotal
     pre = Repo.all(query)
+    IO.inspect(label: pre)
     precio_total =  List.first(pre)+ precio_parcial
 
     #Como se hacen cambios en la base de datos

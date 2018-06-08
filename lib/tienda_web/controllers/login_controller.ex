@@ -27,5 +27,11 @@ defmodule TiendaWeb.LoginController do
     |> redirect(to: "/")
   end
 
+  def cerrar_sesion(conn, _params) do
+    conn
+    |> delete_session(:usuario_actual)
+    |> redirect(to: "/")
+  end
+
 
 end

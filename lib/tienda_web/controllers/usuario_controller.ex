@@ -14,14 +14,15 @@ defmodule TiendaWeb.UsuarioController do
 
 
   def create(conn, %{"usuario" => usuario_params}) do
-    IO.inspect(label: usuario_params)
     case Registro.crear_usuario(usuario_params) do
       {:ok, usuario} ->
         conn
         |> put_flash(:info, "Usuario Creado")
         |> redirect(to: "/")
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        conn
+        |> put_flash(:error, "Error al ingresar los datos")
+        |> render("new.html", changeset: changeset)
     end
   end
 end
