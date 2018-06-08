@@ -37,6 +37,7 @@ defmodule TiendaWeb.Router do
 
     get "/carro", CarroController, :carro_compra
     post "/carro/eliminar", CarroController, :eliminar_detalle
+    post "/carro/solicitud-completa", CarroController, :solicitud_completa
 
     resources "/usuario", UsuarioController, only: [:edit, :update, :new, :create, :show]
 

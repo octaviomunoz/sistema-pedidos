@@ -1,7 +1,7 @@
 defmodule TiendaWeb.CarroController do
   use TiendaWeb, :controller
 
-  alias Tienda.Pedidos.Pedidos
+  alias Tienda.Sistema.Pedidos
   alias Tienda.Buscar.BuscarProducto
   alias Tienda.{
     Comercio,
@@ -17,7 +17,7 @@ defmodule TiendaWeb.CarroController do
 
     detalle = Pedidos.get_detalle(solicitud)
 
-    render conn, "carro.html", detalle: detalle, precio_total: precio_total
+    render conn, "carro.html", detalle: detalle, precio_total: precio_total, solicitud: solicitud
   end
 
   defp existe_solicitud(conn, solicitud) do
@@ -59,8 +59,6 @@ defmodule TiendaWeb.CarroController do
     end
 
     #Guarda el detalle
-    IO.inspect(label: detalle["producto"])
-
     deta = Pedidos.nuevo_detalle(id_solicitud, detalle)
 
     conn
@@ -69,7 +67,6 @@ defmodule TiendaWeb.CarroController do
   end
 
   def eliminar_detalle(conn, id_detalle) do
-    IO.inspect(label: id_detalle["id"])
     detalle_id = String.to_integer(id_detalle["id"])
 
     Pedidos.borrar_detalle(detalle_id)
@@ -79,5 +76,10 @@ defmodule TiendaWeb.CarroController do
     |> redirect(to: "/carro")
   end
 
-
+  def solicitud_completa(conn, %{"solicitud" => id}) do
+    Pedidos.completar_solicitud(id)
+    conn
+    |> delete_session(:solicitud_id)
+    |> redirect(to: "/")
+  end
 end

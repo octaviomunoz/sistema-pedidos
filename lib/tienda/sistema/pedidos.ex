@@ -1,4 +1,4 @@
-defmodule Tienda.Pedidos.Pedidos do
+defmodule Tienda.Sistema.Pedidos do
 
   import Ecto.Query, warn: false
   alias Tienda.Repo
@@ -9,7 +9,10 @@ defmodule Tienda.Pedidos.Pedidos do
     Detalle
   }
 
-  #Calcula el precio parcial de un detalle
+  @doc """
+  Devuelve el precio parcial multiplicando el precio del
+  producto con el descuento por la cantidad del producto
+  """
   def get_precio_parcial(id_producto, cantidad) do
     producto = Repo.get(Producto, id_producto)
     cantidad_producto = String.to_integer(cantidad)
@@ -18,23 +21,44 @@ defmodule Tienda.Pedidos.Pedidos do
     trunc(precio_parcial)
   end
 
+  @doc """
+  Genera una nueva solicitud a la cual agregar los detalles
+
+  #Falta agregar la fecha en la que se produce
+  """
   def nueva_solicitud(id_usuario, id_producto) do
     producto = Repo.get(Producto, id_producto)
     Solicitud.changeset(%Solicitud{usuario_id: id_usuario, comercio_id: producto.comercio_id, precioEnvio: 100, completa: false, precioTotal: 0})
     |> Repo.insert()
   end
 
-
-  def completar_solicitud(id, solicitud_completa) do
-    if Repo.get_by(Solicitud, :completa) == false do
-      Solicitud.changeset(%Solicitud{completa: true })
+  @doc """
+  Modifica el campo de completado de la solicitud
+  lo que genera es que no se pueda modificarse
+  """
+  def completar_solicitud(id_solicitud) do
+    if  !solicitud_completa(id_solicitud) do
+      Repo.get(Solicitud, id_solicitud)
+      |> Ecto.Changeset.change(completa: true, fechaSolicitud: Ecto.Date.from_erl(:erlang.date()), horaSolicitud: Ecto.Time.from_erl(:erlang.time())
+)
       |> Repo.update()
     end
-
   end
 
-  def nuevo_detalle(id_solicitud, detalle) do
+  @doc """
+  Devuelve si la solicitud esta completa
+  """
+  defp solicitud_completa(id_solicitud) do
+    query = from s in Solicitud,
+      select: s.completa
 
+    Repo.get(query, id_solicitud)
+  end
+
+  @doc """
+  Crea un nuevo detalle
+  """
+  def nuevo_detalle(id_solicitud, detalle) do
     precio_parcial = get_precio_parcial(detalle["producto"], detalle["detalle"]["cantidaProducto"])
     cambio_solicitud_precio_total(id_solicitud, precio_parcial)
     Detalle.changeset(%Detalle{
@@ -46,6 +70,10 @@ defmodule Tienda.Pedidos.Pedidos do
     |> Repo.insert()
   end
 
+  @doc """
+  Modifica el campo de precio total de una Solicitud
+  Recibe como parametros la id de la solicitud y el valor a agregar
+  """
   def cambio_solicitud_precio_total(id_solicitud, precio_parcial) do
     query = from s in Solicitud,
       where: s.id == ^id_solicitud,
@@ -55,12 +83,14 @@ defmodule Tienda.Pedidos.Pedidos do
     precio_total =  List.first(pre)+ precio_parcial
 
     #Como se hacen cambios en la base de datos
-    solicitud = Repo.get(Solicitud, id_solicitud)
-    solicitud = Ecto.Changeset.change solicitud, precioTotal: precio_total
-    Repo.update(solicitud)
-
+    Repo.get(Solicitud, id_solicitud)
+    |> Ecto.Changeset.change(precioTotal: precio_total)
+    |> Repo.update()
   end
 
+  @doc """
+  Devuelve el campo de precio total de una solicitud
+  """
   def precioTotal(id_solicitud) do
     precio = from d in Solicitud,
       where: d.id == ^id_solicitud,
@@ -70,6 +100,10 @@ defmodule Tienda.Pedidos.Pedidos do
     List.first(preciofinal)
   end
 
+  @doc """
+  Retorna los campos perteneciente a un Producto y Detalle con
+  respecto a una solicitud
+  """
   def get_detalle(id_solicitud) do
     detalles = from d in Detalle,
       where: d.solicitud_id == ^id_solicitud,
@@ -81,6 +115,9 @@ defmodule Tienda.Pedidos.Pedidos do
     Repo.all(detalles)
   end
 
+  @doc """
+  Elimina un detalle
+  """
   def borrar_detalle(id_detalle) do
     cam = from d in Detalle,
       select: {d.solicitud_id, d.precioParcial}
