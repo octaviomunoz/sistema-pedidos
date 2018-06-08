@@ -1,31 +1,62 @@
 <h2> <%= @producto.nombre %> </h2>
+<table class="table">
 
-<div>
-  Ingredientes :  <%= @producto.ingrediente %>
-</div>
-<div>
-  Precio Normal = <%= @producto.precioUnitario %>
-</div>
-<%= if @producto.porcentajeDescuento > 0  do %>
-  <div>
-    Descuento = <%= @producto.porcentajeDescuento %> %
-  </div>
-  <div>
-    Precio de Descuento = <%=  @producto.precioUnitario * (1 - (@producto.porcentajeDescuento/100)) %>
-  </div>
-  <div>
-    Descuento    <%= @producto.mensajeDescuento %>
-  </div>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<%end%>
+  <tbody>
+
+    <tr>
+      <td> Ingredientes </td>
+      <td> <%=@producto.ingrediente %></td>
+    </tr>
+
+    <tr>
+      <td> Precio Normal </td>
+      <td> <%= @producto.precioUnitario %></td>
+    </tr>
+
+    <%= if @producto.porcentajeDescuento > 0  do %>
+
+      <tr>
+        <td> Descuento </td>
+        <td> <%= @producto.porcentajeDescuento %> %</td>
+      </tr>
+
+      <tr>
+        <td> Precio Oferta </td>
+        <td> <%=  @producto.precioUnitario * (1 - (@producto.porcentajeDescuento/100)) %></td>
+      </tr>
+
+      <tr>
+        <td> Mensaje Descuento</td>
+        <td><%= @producto.mensajeDescuento %></td>
+      </tr>
+
+    <%end%>
+    
+  </tbody>
+</table>
 
 <%= form_for @detalle, carro_path(@conn, :agregar_carro, producto: @producto.id, comercio: @producto.comercio_id), fn f -> %>
 
-  <label> Ingrese Cantidad</label>
-  <%= number_input f, :cantidaProducto %>
-  <%= submit "Agregar al Carrito" %>
-
-  <%= textarea f, :comentario %>
+  <div>
+    <%= label f, "Ingrese la cantidad deseada" %>
+    <div>
+      <%= number_input f, :cantidaProducto %>
+      <%= submit "Agregar al Carrito" %>
+    </div>
+  </div>
+  <div>
+    <%= label f, "Ingrese un comentario del producto" %>
+    <div>
+      <%= textarea f, :comentario %>
+    </div>
+  </div>
 
   <%= link "Atras", to: carro_path(@conn, :mostrar_producto, %{id: @producto.comercio_id}), method: :post %>
 <%end%>
