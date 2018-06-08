@@ -127,12 +127,10 @@ defmodule Tienda.Sistema.Pedidos do
     cam = from d in Detalle,
       select: {d.solicitud_id, d.precioParcial}
     solicitud = Repo.get(cam, id_detalle)
-
-    detalle = Repo.get(Detalle, id_detalle)
-
     cambio_solicitud_precio_total(-(elem(solicitud, 1)), elem(solicitud, 0))
 
-    Repo.delete(detalle)
+    Repo.get(Detalle, id_detalle)
+    |> Repo.delete()
   end
 
   @doc """
@@ -146,4 +144,25 @@ defmodule Tienda.Sistema.Pedidos do
 
     Repo.get(query, id_solicitud)
   end
+
+
+  @doc """
+  Elimina una solicitud
+  """
+  def eliminar_solicitud(id_solicitud) do
+    query = from d in Detalle,
+      where: d.solicitud_id == ^id_solicitud,
+      select: d.id
+
+    detalles = Repo.all(query)
+
+    for id <- detalles do
+      borrar_detalle(id)
+    end
+
+    Repo.get(Solicitud, id_solicitud)
+    |> Repo.delete()
+
+  end
+
 end

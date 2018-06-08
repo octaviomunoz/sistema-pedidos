@@ -32,5 +32,6 @@
     <h4> Total a pagar : <%= @precio_total %></h4>
 
     <h4><span><%= link "Seguir Comprando", to: carro_path(@conn, :mostrar_producto, %{comercio: @comercio}), method: :post %></span></h4>
-    <h4><%= link "Finalizar Pedido", to: carro_path(@conn, :solicitud_completa, %{solicitud: @solicitud}), method: :post %></h4>
+    <h4><%= link "Finalizar Pedido", to: carro_path(@conn, :solicitud_completa) %></h4>
+    <h4><%= link "Cancelar Pedido", to: carro_path(@conn, :cancelar_solicitud)%></h4>
   </tbody>

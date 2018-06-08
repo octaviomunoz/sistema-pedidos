@@ -81,10 +81,21 @@ defmodule TiendaWeb.CarroController do
   end
 
 
-  def solicitud_completa(conn, %{"solicitud" => id}) do
-    Pedidos.completar_solicitud(id)
+  def solicitud_completa(conn, _params) do
+    id_solicitud = get_session(conn, :solicitud_id)
+    Pedidos.completar_solicitud(id_solicitud)
     conn
     |> delete_session(:solicitud_id)
+    |> redirect(to: "/")
+  end
+
+  def cancelar_solicitud(conn, _params) do
+    id_solicitud = get_session(conn, :solicitud_id)
+    Pedidos.eliminar_solicitud(id_solicitud)
+
+    conn
+    |> delete_session(:solicitud_id)
+    |> put_flash(:info, "Pedido Cancelado")
     |> redirect(to: "/")
   end
 end
