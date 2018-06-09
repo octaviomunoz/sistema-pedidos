@@ -1,8 +1,10 @@
 defmodule TiendaWeb.CarroController do
   use TiendaWeb, :controller
 
-  alias Tienda.Sistema.Pedidos
-  alias Tienda.Buscar.BuscarProducto
+  alias Tienda.Sistema.{
+    Pedidos,
+    Busqueda
+  }
   alias Tienda.{
     Comercio,
     Solicitud,
@@ -33,13 +35,14 @@ defmodule TiendaWeb.CarroController do
 
 
   def mostrar_producto(conn, %{"comercio" => id_comercio}) do
-    productos = BuscarProducto.buscar_producto(id_comercio)
+    productos = Busqueda.buscar_producto(id_comercio)
+    comercio =
     render conn, "producto.html", productos: productos
   end
 
 
   def agregar_producto(conn, %{"producto" => id_producto}) do
-    producto = BuscarProducto.get_producto(id_producto)
+    producto = Busqueda.get_producto(id_producto)
     detalle = Detalle.detalle_change(%Detalle{})
     render conn, "seleccion.html", producto: producto, detalle: detalle
   end

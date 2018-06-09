@@ -1,4 +1,4 @@
-defmodule Tienda.Login.Login do
+defmodule Tienda.Sistema.Login do
 
   import Ecto.Query, warn: false
   alias Tienda.Repo

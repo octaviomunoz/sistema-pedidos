@@ -2,7 +2,7 @@ defmodule TiendaWeb.LoginController do
   use TiendaWeb, :controller
 
   alias Tienda.Usuario
-  alias Tienda.Login.Login
+  alias Tienda.Sistema.Login
 
   def login_usuario(conn, _params) do
     datos = Usuario.usuario_change(%Usuario{})

@@ -26,11 +26,6 @@ defmodule TiendaWeb.Router do
     post "/validacion", LoginController, :validacion
     get "/finalizar-sesion", LoginController, :cerrar_sesion
 
-    get "/search/continente", SearchController, :elegircontinente
-    post "/search/pais", SearchController, :elegirpais
-    post "/search/ciudad", SearchController, :elegirciudad
-    post "/search/comercio", SearchController, :elegircomercio
-
     post "/productos", CarroController, :mostrar_producto
     post "/eleccion", CarroController, :agregar_producto
     post "/eleccion/agregar_carro", CarroController, :agregar_carro

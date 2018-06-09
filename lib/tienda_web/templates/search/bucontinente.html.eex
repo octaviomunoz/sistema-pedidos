@@ -1,9 +1,0 @@
-<h2> Buscando Comercio </h2>
-<h4> Continente </h4>
-
-
-<%= form_for @nombre, search_path(@conn, :elegirpais), fn f -> %>
-  <%= select f, :nombre, @continentes %>
-
-  <%= submit "Submit" %>
-<%end%>
