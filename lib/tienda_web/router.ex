@@ -25,6 +25,7 @@ defmodule TiendaWeb.Router do
     post "/login", LoginController, :login_usuario
     post "/validacion", LoginController, :validacion
     get "/finalizar-sesion", LoginController, :cerrar_sesion
+    post "/finalizar-sesion", LoginController, :cerrar_sesion
 
     post "/productos", CarroController, :mostrar_producto
     post "/eleccion", CarroController, :agregar_producto
@@ -35,7 +36,9 @@ defmodule TiendaWeb.Router do
     get "/carro/solicitud-completa", CarroController, :solicitud_completa
     get "/carro/cancelar-pedido", CarroController, :cancelar_solicitud
 
-    resources "/usuario", UsuarioController, only: [:edit, :update, :new, :create, :show]
+    resources "/usuario", UsuarioController, only: [:edit, :update, :new, :create]
+
+    get "usuario/info", UsuarioController, :show
 
 
 
@@ -45,19 +48,14 @@ defmodule TiendaWeb.Router do
 
     resources "/comercio", ComercioController, only: [:edit, :update, :new, :create, :show]
 
-    get "/representante", ComercioController, :new_representante
-    post "/representante/create", ComercioController, :create_representante
-    post "/representante", ComercioController, :eliminar_repre
+
   end
 
   scope "/registro", TiendaWeb do
     pipe_through :browser
-
-    get "/usuario", RegistroController, :new_usuario
-    post "/usuario", RegistroController, :create_usuario
-
-    get "/comercio", RegistroController, :new_comercio
-    post "/comercio", RegistroController, :create_comercio
+    get "/representante", ComercioController, :new_representante
+    post "/representante/create", ComercioController, :create_representante
+    post "/representante", ComercioController, :eliminar_repre
   end
 
   # Other scopes may use custom stacks.

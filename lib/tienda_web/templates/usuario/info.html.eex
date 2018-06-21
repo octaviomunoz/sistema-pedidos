@@ -1,0 +1,30 @@
+<body>
+  <div class="info">
+    <p id="nombre">Nombre: <%= @usuario.nombre %> <%= @usuario.apellido %></p>
+    <p id="telefono">Telefono: <%= @usuario.telefono %></p>
+    <p id="email">Correo: <%= @usuario.email %></p>
+  </div>
+  <div class="info">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Hora</th>
+          <th>Comercio</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for solicitudes <- @solicitudes do %>
+          <tr>
+            <td><%= elem(solicitudes, 0) %></td>
+            <td><%= elem(solicitudes, 1)%></td>
+            <td><%= elem(solicitudes, 2) %></td>
+            <td><%= elem(solicitudes, 3) %>
+              </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</body>

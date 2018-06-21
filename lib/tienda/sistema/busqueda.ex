@@ -9,7 +9,9 @@ defmodule Tienda.Sistema.Busqueda do
 
   alias Tienda.{
     Comercio,
-    Producto
+    Producto,
+    Usuario,
+    Solicitud
   }
 
   @doc """
@@ -43,6 +45,27 @@ defmodule Tienda.Sistema.Busqueda do
 
   def get_comercio(id_comercio) do
     Repo.get(Comercio, id_comercio)
+  end
+
+  @doc """
+  Obtinen la informacion del usuario
+  """
+  def get_usuario(id_usuario) do
+    query = from u in Usuario,
+      select: %{nombre: u.nombres, apellido: u.apellido, email: u.email, telefono: u.telefono}
+    Repo.get(query, id_usuario)
+  end
+
+  @doc """
+  Obtinen la lista de las solicitudes hechas por un usuario
+  """
+  def get_solicitud_usuario(id_usuario) do
+    query = from s in Solicitud,
+      join: u in Usuario, join: c in Comercio,
+        where: u.id == ^id_usuario and s.comercio_id == c.id,
+        select: %{fecha: s.fechaSolicitud, hora: s.horaSolicitud, nombre_comercio: c.nombre, precio: s.precioTotal}
+
+    Repo.all(query)
   end
 
 end

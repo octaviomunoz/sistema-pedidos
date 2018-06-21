@@ -37,7 +37,7 @@ defmodule Tienda.Sistema.Pedidos do
   def completar_solicitud(id_solicitud) do
     if  !solicitud_completa(id_solicitud) do
       Repo.get(Solicitud, id_solicitud)
-      |> Ecto.Changeset.change(completa: true, fechaSolicitud: Ecto.Date.from_erl(:erlang.date()), horaSolicitud: Ecto.Time.from_erl(:erlang.time())
+      |> Ecto.Changeset.change(completa: true, fechaSolicitud: Ecto.Date.from_erl(:erlang.date()), horaSolicitud: Time.truncate(Ecto.Time.from_erl(:erlang.time()), :second)
 )
       |> Repo.update()
     end

@@ -1,13 +1,20 @@
 
+<div class="nav">
+  <ul>
+    <li><%= link "Usuario", to: usuario_path(@conn, :show), class: "link" %></li>
+    <li><%= link "Carro", to: carro_path(@conn, :carro_compra), class: "link" %></li>
+    <li><%= link "Cerrar Sesion", to: login_path(@conn, :cerrar_sesion), class: "link" %></li>
+  </ul>
+</div>
+
+
+
 <div class="contenedor-formulario">
-
-
 <%= form_for @producto, comercio_path(@conn, :obteniendo_producto), fn f -> %>
 
   <h2>Busqueda de Producto</h2>
-  <%= text_input f, :nombre, [placeholder: "Nombre del producto a buscar", required: ""] %>  
+  <%= text_input f, :nombre, [placeholder: "Nombre del producto a buscar", required: ""] %>
   <%= submit "Buscar", [class: "button"] %>
 
 <%end%>
-
 </div>

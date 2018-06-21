@@ -1,7 +1,10 @@
 defmodule TiendaWeb.UsuarioController do
   use TiendaWeb, :controller
 
-  alias Tienda.Sistema.Registro
+  alias Tienda.Sistema.{
+    Registro,
+    Busqueda
+  }
 
   alias Tienda.{
     Usuario
@@ -24,5 +27,13 @@ defmodule TiendaWeb.UsuarioController do
         |> put_flash(:error, "Error al ingresar los datos")
         |> render("form.html", changeset: changeset)
     end
+  end
+
+  def show(conn, _params) do
+    id_usuario = get_session(conn, :usuario_actual)
+    usuario = Busqueda.get_usuario(id_usuario)
+    solicitudes = Busqueda.get_solicitud_usuario(id_usuario)
+
+    render conn, "info.html", usuario: usuario, solicitudes: solicitudes
   end
 end

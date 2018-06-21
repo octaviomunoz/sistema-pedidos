@@ -23,6 +23,7 @@ defmodule TiendaWeb.LoginController do
   defp ok_login(conn, user) do
     conn
     |> put_flash(:info, "Inicio de Sesion Correcto")
+    |> put_flash(:user, user.nombres)
     |> put_session(:usuario_actual, user.id)
     |> redirect(to: "/")
   end
