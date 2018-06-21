@@ -7,7 +7,7 @@ defmodule Tienda.Repo.Migrations.CreateComercio do
       add :email, :string
       add :telefono, :integer
       add :calleDireccion, :string
-      add :numeroDireccion, :integer
+      add :numeroDireccion, :string
       add :fax, :string
       add :urlSitio, :string
       add :coordenadasLocalizacionGeografica, :binary

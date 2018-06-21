@@ -18,7 +18,7 @@ defmodule Tienda.Comercio do
     field :mensajeGeneral, :string
     field :mensajeUsuarioCancelacionSolicitud, :string
     field :nombre, :string
-    field :numeroDireccion, :integer
+    field :numeroDireccion, :string
     field :porcentajeDescuentoGeneral, :integer
     field :redSocialFacebook, :string
     field :redSocialInstagram, :string
@@ -45,7 +45,7 @@ defmodule Tienda.Comercio do
   def changeset(comercio, attrs) do
     comercio
     |> cast(attrs, [:nombre, :email, :telefono, :calleDireccion, :numeroDireccion, :fax, :urlSitio, :coordenadasLocalizacionGeografica, :mapaLocalizacionGeografica, :valorMinEntregaComida, :porcentajeDescuentoGeneral, :mensajeGeneral, :mensajeDescuento, :visibleComercio, :mensajeUsuarioSolicitud, :mensajeUsuarioCancelacionSolicitud, :fotoPortada, :comercioActivo, :condiciones, :tipoPagoSolicitud, :redSocialFacebook, :redSocialInstagram, :redSocialLinkedin, :redSocialWhatsapp])
-    |> validate_required([:nombre, :email, :telefono, :calleDireccion, :valorMinEntregaComida, :porcentajeDescuentoGeneral, :mensajeGeneral, :mensajeDescuento, :visibleComercio, :mensajeUsuarioSolicitud, :mensajeUsuarioCancelacionSolicitud, :comercioActivo, :condiciones, :tipoPagoSolicitud])
+    |> validate_required([:nombre, :email, :telefono, :calleDireccion, :numeroDireccion])
   end
 
 

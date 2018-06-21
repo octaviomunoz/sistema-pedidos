@@ -6,8 +6,7 @@ defmodule Tienda.Repo.Migrations.CreateRepresentante do
       add :email, :string
       add :nombre, :string
       add :telefono, :string
-      add :calleDireccion, :string
-      add :numeroDireccion, :integer
+      add :password, :string
 
       timestamps()
     end

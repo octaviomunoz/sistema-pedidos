@@ -14,6 +14,7 @@ defmodule TiendaWeb.UsuarioController do
 
 
   def create(conn, %{"usuario" => usuario_params}) do
+    IO.inspect(label: "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
     case Registro.crear_usuario(usuario_params) do
       {:ok, usuario} ->
         conn

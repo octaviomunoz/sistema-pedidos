@@ -22,7 +22,7 @@
   position: absolute;
   top: 7px;
   right: 7px;
-  width: 100px;
+  width: 150px;
   height: 30px;
   font-size: 12px;
   line-height: 25px;
@@ -53,7 +53,8 @@
 .contenedor-formulario input[type=email],
 .contenedor-formulario input[type=password],
 .contenedor-formulario input[type=text],
-.contenedor-formulario input[type=number]{
+.contenedor-formulario input[type=number],
+.contenedor-formulario input[type=url]{
   outline: none;
   background: rgba(0, 0, 0, 0.5);
   display: block;

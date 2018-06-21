@@ -15,7 +15,6 @@ defmodule TiendaWeb.Router do
 
 
 
-
   scope "/", TiendaWeb do
     pipe_through :browser # Use the default browser stack
 
@@ -38,8 +37,19 @@ defmodule TiendaWeb.Router do
 
     resources "/usuario", UsuarioController, only: [:edit, :update, :new, :create, :show]
 
+
+
+
     get "/busqueda", ComercioController, :busqueda_producto
     post "/busqueda/comercios", ComercioController, :obteniendo_producto
+  end
+
+  scope "/registro", TiendaWeb do
+    pipe_through :browser
+    resources "/comercio", ComercioController, only: [:edit, :update, :new, :create, :show]
+
+    post "/representante", ComercioController, :new_representante
+    post "/representante/save", ComercioController, :create_representante
   end
 
   # Other scopes may use custom stacks.

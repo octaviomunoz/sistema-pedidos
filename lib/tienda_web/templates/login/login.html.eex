@@ -1,6 +1,8 @@
 <div class= "contenedor-formulario">
 
-  <p class="alert-danger"><%= get_flash(@conn, :error) %></p>
+  <p class="alert alert-danger"><%= get_flash(@conn, :error) %></p>
+  <p class="alert alert-info"><%= get_flash(@conn, :info) %></p>
+
 
   <%= form_for @datos, login_path(@conn, :validacion), fn f -> %>
     <div class="toggle">
@@ -8,8 +10,7 @@
     </div>
     <h2> Iniciar Sesion </h2>
     <%= email_input f, :email, [class: "email_input",placeholder: "Correo Electronico", required: ""] %>
-    <%= password_input f, :password, [class: "password_input",placeholder: "Contraseña", required: ""]%>
-
+    <%= password_input f, :password, [placeholder: "Contraseña", required: ""]%>
 
     <%= submit "Ingresar", [class: "button"] %>
   <%end%>
