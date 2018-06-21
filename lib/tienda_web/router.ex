@@ -42,15 +42,22 @@ defmodule TiendaWeb.Router do
 
     get "/busqueda", ComercioController, :busqueda_producto
     post "/busqueda/comercios", ComercioController, :obteniendo_producto
-  end
 
-  scope "/registro", TiendaWeb do
-    pipe_through :browser
     resources "/comercio", ComercioController, only: [:edit, :update, :new, :create, :show]
 
     get "/representante", ComercioController, :new_representante
     post "/representante/create", ComercioController, :create_representante
     post "/representante", ComercioController, :eliminar_repre
+  end
+
+  scope "/registro", TiendaWeb do
+    pipe_through :browser
+
+    get "/usuario", RegistroController, :new_usuario
+    post "/usuario", RegistroController, :create_usuario
+
+    get "/comercio", RegistroController, :new_comercio
+    post "/comercio", RegistroController, :create_comercio
   end
 
   # Other scopes may use custom stacks.

@@ -6,15 +6,32 @@
     <div class="toggle">
       <span><%= link "Registrar Comercio", to: comercio_path(@conn, :new_representante), class: "link" %></span>
     </div>
-    <h2>Datos del Usuario</h2>
+    <div class="formulario">
+      <h2>Datos del Usuario</h2>
 
-    <%= text_input f, :nombres, [class: "text_input",placeholder: "Ingrese su nombre", required: ""] %>
-    <%= text_input f, :apellido, [class: "text_input",placeholder: "Ingrese su apellido", required: ""] %>
-    <%= email_input f, :email, [class: "email_input",placeholder: "Correo Electronico", required: ""] %>
-    <%= password_input f, :password, [class: "password_input",placeholder: "Ingrese su contraseña", required: ""] %>
-    <%= number_input f, :telefono, [class: "number_input",placeholder: "Ingrese su numero telefonico", required: ""] %>
+      <div class="field-contenedor">
+        <i class="fas fa-user fa-2x"></i>
+        <%= text_input f, :nombres, [class: "text_input",placeholder: "Ingrese su nombre", required: ""] %>
+      </div>
+      <div class="field-contenedor">
+        <i class="fas fa-user fa-2x"></i>
+        <%= text_input f, :apellido, [class: "text_input",placeholder: "Ingrese su apellido", required: ""] %>
+      </div>
+      <div class="field-contenedor">
+        <i class="fas fa-envelope fa-2x"></i>
+        <%= email_input f, :email, [class: "email_input",placeholder: "Correo Electronico", required: ""] %>
+      </div>
+      <div class="field-contenedor">
+        <i class="fas fa-key fa-2x"></i>
+        <%= password_input f, :password, [class: "password_input",placeholder: "Ingrese su contraseña", required: ""] %>
+      </div>
+      <div class="field-contenedor">
+        <i class="fas fa-phone fa-2x"></i>
+        <%= number_input f, :telefono, [class: "number_input",placeholder: "Ingrese su numero telefonico", required: ""] %>
+      </div>
 
-    <%= submit "Siguiente", [class: "button"] %>
+      <%= submit "Siguiente", [class: "button"] %>
+    </div>
   <%end%>
 
   <%= button "Volver", to: login_path(@conn, :login_usuario), class: "button-volver"%>

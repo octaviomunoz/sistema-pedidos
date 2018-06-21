@@ -1,6 +1,13 @@
-<h3>Busqueda de producto</h3>
+
+<div class="contenedor-formulario">
+
+
 <%= form_for @producto, comercio_path(@conn, :obteniendo_producto), fn f -> %>
-  <%= text_input f, :nombre %>
-  <%= submit "Buscar" %>
+
+  <h2>Busqueda de Producto</h2>
+  <%= text_input f, :nombre, [placeholder: "Nombre del producto a buscar", required: ""] %>  
+  <%= submit "Buscar", [class: "button"] %>
 
 <%end%>
+
+</div>

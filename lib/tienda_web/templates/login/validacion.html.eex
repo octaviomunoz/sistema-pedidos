@@ -1,4 +1,0 @@
-<h2> Validacion </h2>
-
-
-<h3><%= @mensaje %> </h3>

@@ -44,10 +44,28 @@
 }
 
 .contenedor-formulario h2 {
-  margin: 0 0 28px 0;
-  font-size: 20px;
+  margin: 0 0 34px 0;
+  font-size: 25px;
   font-weight: 400;
-  line-height: 1px;
+  line-height: 4px;
+}
+
+.contenedor-formulario .field-contenedor div{
+  position: relative;
+  display: inline-block;
+}
+
+
+.contenedor-formulario .field-contenedor i{
+  /*border: solid 2px #f0cc63;*/
+  background-color: #f0cc63;
+  color: rgb(92, 92, 92);
+  padding:4px;
+  margin-right: -4px;
+  border-bottom: 3px solid #f0cc63;
+  border-radius: 4px 0px 0px 4px;
+  vertical-align: top;
+
 }
 
 .contenedor-formulario input[type=email],
@@ -55,27 +73,29 @@
 .contenedor-formulario input[type=text],
 .contenedor-formulario input[type=number],
 .contenedor-formulario input[type=url]{
+  position: cover;
   outline: none;
   background: rgba(0, 0, 0, 0.5);
-  display: block;
-  width: 100%;
-  padding: 10px 15px;
+  /*display: block;*/
+  width: 85%;
+  padding: 8px;
   color: #fff;
   border: none;
-  border-radius: 2px;
+  border-radius: 0 4px 4px 0;
   border-bottom: 3px solid #f0cc63;
   font-size: 14px;
   font-weight: normal;
-  margin: 0 0 20px 0;
+  margin: 0 0px 20px 0;
   transition: all .5s ease;
 }
 
+/*
 .contenedor-formulario input[type=email]:focus,
 .contenedor-formulario input[type=password]:focus,
 .contenedor-formulario input[type=text]:focus,
 .contenedor-formulario input[type=number]:focus{
   border-bottom: 3px solid #65a0f0;
-}
+}*/
 
 .contenedor-formulario .number_input{
     -webkit-appearance: none;

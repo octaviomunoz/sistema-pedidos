@@ -9,8 +9,16 @@
       <span><%= link "Registrase", to: usuario_path(@conn, :new), class: "link" %></span>
     </div>
     <h2> Iniciar Sesion </h2>
-    <%= email_input f, :email, [class: "email_input",placeholder: "Correo Electronico", required: ""] %>
-    <%= password_input f, :password, [placeholder: "Contraseña", required: ""]%>
+
+    <div class="field-contenedor">
+      <i class="far fa-envelope fa-2x"></i>
+      <%= email_input f, :email, [placeholder: "Correo Electronico", required: ""] %>
+    </div>
+
+    <div class="field-contenedor">
+      <i class="fas fa-key fa-2x"></i>
+      <%= password_input f, :password, [placeholder: "Contraseña", required: ""]%>
+    </div>
 
     <%= submit "Ingresar", [class: "button"] %>
   <%end%>

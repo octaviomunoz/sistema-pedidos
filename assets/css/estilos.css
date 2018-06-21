@@ -1,0 +1,12 @@
+/*Donde estaran los estilos principales de la pagina*/
+
+.nav{
+  position: relative;
+  background: rgb(24, 23, 102);
+  background-position: top;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+  margin-right: inherit;
+
+}
