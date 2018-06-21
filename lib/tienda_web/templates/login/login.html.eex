@@ -1,4 +1,7 @@
 <div class= "contenedor-formulario">
+
+  <p class="alert-danger"><%= get_flash(@conn, :error) %></p>
+
   <%= form_for @datos, login_path(@conn, :validacion), fn f -> %>
     <div class="toggle">
       <span><%= link "Registrase", to: usuario_path(@conn, :new), class: "link" %></span>

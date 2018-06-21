@@ -1,4 +1,7 @@
 <div class="contenedor-formulario">
+
+  <p class="alert-danger"><%= get_flash(@conn, :error) %></p>
+
   <%= form_for @changeset, usuario_path(@conn, :create), fn f -> %>
     <h2>Registrar Nuevo Usuario</h2>
 

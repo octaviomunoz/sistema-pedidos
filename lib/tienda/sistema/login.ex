@@ -10,7 +10,7 @@ defmodule Tienda.Sistema.Login do
     user = Repo.get_by(Usuario, email: datoslogeo["email"])
 
     if user == nil do
-      {:error, mensaje: "email ingresado incorrecto"}
+      {:error, mensaje: "Correo Incorrecto"}
     else
       case verificar_password(datoslogeo["password"], user.password) do
         {:ok} ->
