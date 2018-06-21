@@ -16,8 +16,6 @@ defmodule TiendaWeb.CarroController do
     existe_solicitud(conn, solicitud)
 
     comercio = Pedidos.get_comercio_id(solicitud)
-    IO.inspect(label: "ID COMERCIO")
-    IO.inspect(label: comercio)
     precio_total = Pedidos.precioTotal(solicitud)
     detalle = Pedidos.get_detalle(solicitud)
 

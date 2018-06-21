@@ -44,7 +44,7 @@ defmodule Tienda.Comercio do
   @doc false
   def changeset(comercio, attrs) do
     comercio
-    |> cast(attrs, [:nombre, :email, :telefono, :calleDireccion, :numeroDireccion, :fax, :urlSitio, :coordenadasLocalizacionGeografica, :mapaLocalizacionGeografica, :valorMinEntregaComida, :porcentajeDescuentoGeneral, :mensajeGeneral, :mensajeDescuento, :visibleComercio, :mensajeUsuarioSolicitud, :mensajeUsuarioCancelacionSolicitud, :fotoPortada, :comercioActivo, :condiciones, :tipoPagoSolicitud, :redSocialFacebook, :redSocialInstagram, :redSocialLinkedin, :redSocialWhatsapp])
+    |> cast(attrs, [:nombre, :email, :telefono, :calleDireccion, :numeroDireccion, :fax, :urlSitio, :coordenadasLocalizacionGeografica, :mapaLocalizacionGeografica, :valorMinEntregaComida, :porcentajeDescuentoGeneral, :mensajeGeneral, :mensajeDescuento, :visibleComercio, :mensajeUsuarioSolicitud, :mensajeUsuarioCancelacionSolicitud, :fotoPortada, :comercioActivo, :condiciones, :tipoPagoSolicitud, :redSocialFacebook, :redSocialInstagram, :redSocialLinkedin, :redSocialWhatsapp, :representante_id])
     |> validate_required([:nombre, :email, :telefono, :calleDireccion, :numeroDireccion])
   end
 

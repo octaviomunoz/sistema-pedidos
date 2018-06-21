@@ -29,5 +29,10 @@ defmodule Tienda.Sistema.Registro do
     |> Repo.insert()
   end
 
+  def eliminar_representante(id) do
+    Repo.get(Representante, id)
+    |> Repo.delete()
+  end
+
 
 end

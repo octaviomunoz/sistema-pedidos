@@ -48,8 +48,9 @@ defmodule TiendaWeb.Router do
     pipe_through :browser
     resources "/comercio", ComercioController, only: [:edit, :update, :new, :create, :show]
 
-    post "/representante", ComercioController, :new_representante
-    post "/representante/save", ComercioController, :create_representante
+    get "/representante", ComercioController, :new_representante
+    post "/representante/create", ComercioController, :create_representante
+    post "/representante", ComercioController, :eliminar_repre
   end
 
   # Other scopes may use custom stacks.

@@ -1,11 +1,10 @@
 <div class= "contenedor-formulario">
 
-  <%= form_for @changeset, comercio_path(@conn, :create), fn f -> %>
-  <div class="toggle">
-    <span><%= link "Registrar Usuario", to: usuario_path(@conn, :new), class: "link" %></span>
-  </div>
+  <%= form_for @changeset, comercio_path(@conn, :create, %{representante_id: @id_repre}), fn f -> %>
 
-  <h2>Datos del Comercio</h2>
+
+    <h2>Datos del Comercio</h2>
+
     <%= text_input f, :nombre, [placeholder: "Nombre del Comercio", required: ""] %>
     <%= email_input f, :email, [placeholder: "Email del Comercio", required: ""] %>
 
@@ -16,8 +15,8 @@
 
     <%= number_input f, :telefono, [placeholder: "Numero de Telefono", required: ""] %>
 
-    <%= submit "Siguiente", [class: "button"] %>
+    <%= submit "Guardar", [class: "button"] %>
   <%end%>
 
-  <%= button "Volver", to: login_path(@conn, :login_usuario), class: "button-volver", method: :post %>
+  <%= button "Cancelar", to: comercio_path(@conn, :eliminar_repre, %{id: @id_repre}), class: "button-volver", method: :post %>
 </div>

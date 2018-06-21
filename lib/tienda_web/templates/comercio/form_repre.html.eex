@@ -3,6 +3,10 @@
   <p class="alert-danger"><%= get_flash(@conn, :error) %></p>
 
   <%= form_for @changeset, comercio_path(@conn, :create_representante), fn f -> %>
+    <div class="toggle">
+      <span><%= link "Registrar Usuario", to: usuario_path(@conn, :new), class: "link" %></span>
+    </div>
+
     <h2>Datos del Representante</h2>
 
     <%= text_input f, :nombre, [class: "text_input",placeholder: "Ingrese Nombre", required: ""] %>
@@ -13,5 +17,5 @@
     <%= submit "Guardar", [class: "button"] %>
   <%end%>
 
-  <%= button "Cancelar", to: login_path(@conn, :login_usuario), class: "button-volver"%>
+  <%= button "Volver", to: login_path(@conn, :login_usuario), class: "button-volver"%>
 </div>
