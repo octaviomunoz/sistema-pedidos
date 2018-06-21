@@ -37,8 +37,7 @@ defmodule Tienda.Sistema.Pedidos do
   def completar_solicitud(id_solicitud) do
     if  !solicitud_completa(id_solicitud) do
       Repo.get(Solicitud, id_solicitud)
-      |> Ecto.Changeset.change(completa: true, fechaSolicitud: Ecto.Date.from_erl(:erlang.date()), horaSolicitud: Time.truncate(Ecto.Time.from_erl(:erlang.time()), :second)
-)
+      |> Ecto.Changeset.change(completa: true, fechaSolicitud: Ecto.Date.from_erl(:erlang.date()), horaSolicitud: Ecto.Time.from_erl(:erlang.time()))
       |> Repo.update()
     end
   end
@@ -57,11 +56,6 @@ defmodule Tienda.Sistema.Pedidos do
   Crea un nuevo detalle
   """
   def nuevo_detalle(id_solicitud, detalle, id_producto) do
-    IO.inspect(label: "PROBLEMAS 0001")
-    IO.inspect(label: id_solicitud)
-    IO.inspect(label: detalle)
-    IO.inspect(label: id_producto)
-
     precio_parcial = get_precio_parcial(id_producto, detalle["cantidaProducto"])
 
     cambio_solicitud_precio_total(precio_parcial, id_solicitud)

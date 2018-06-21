@@ -17,10 +17,10 @@
       <tbody>
         <%= for solicitudes <- @solicitudes do %>
           <tr>
-            <td><%= elem(solicitudes, 0) %></td>
-            <td><%= elem(solicitudes, 1)%></td>
-            <td><%= elem(solicitudes, 2) %></td>
-            <td><%= elem(solicitudes, 3) %>
+            <td><%= solicitudes.fecha %></td>
+            <td><%= solicitudes.hora%></td>
+            <td><%= solicitudes.nombre_comercio %></td>
+            <td><%= solicitudes.precio %>
               </td>
           </tr>
         <%end%>
