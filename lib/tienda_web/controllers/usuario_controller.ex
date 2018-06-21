@@ -9,7 +9,7 @@ defmodule TiendaWeb.UsuarioController do
 
   def new(conn, _params) do
     changeset = Usuario.usuario_change(%Usuario{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "form.html", changeset: changeset)
   end
 
 
@@ -22,7 +22,7 @@ defmodule TiendaWeb.UsuarioController do
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_flash(:error, "Error al ingresar los datos")
-        |> render("new.html", changeset: changeset)
+        |> render("form.html", changeset: changeset)
     end
   end
 end

@@ -11,12 +11,9 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body>
+  <body class= "body-index">
     <div class="container">
-      <header class="header">
-        <nav role="navigation">
-        </nav>
-        <span class="logo"></span>
+      <header>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

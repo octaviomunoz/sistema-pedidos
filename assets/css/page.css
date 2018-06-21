@@ -1,0 +1,136 @@
+.header,
+.marketing {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
+/* Customize container */
+
+
+label {
+	color: white;
+}
+
+
+.h3_buscar_producto{
+	margin-left: 40%;
+	color: white;
+
+}
+
+.h3_buscar_producto	.row{
+	margin-right: -355px;
+}
+
+
+
+a:-webkit-any-link{
+	color: #ffd7d7;
+}
+
+.buscar-producto{
+	margin-left: 40%;
+	margin-top: 5%;
+	color: #f39595;
+}
+
+.volver{
+	margin-left: 60%;
+}
+
+table.dataTable{
+	    width: 800px;
+}
+
+#example_info{
+	color: white;
+}
+#example_wrapper{
+	margin-left: 55%;
+	width: 420px;
+}
+
+#example_filter{
+	margin-left: 215%;
+}
+.row{
+	    margin-left: 100px; important!
+	    margin-left: 30%;
+}
+/*login*/
+.login{
+	margin-top: -3%;
+	margin-left: 40%;
+	margin-right: 47%;
+}
+
+
+.body-index{
+	background: url("/images/fondo.jpg") no-repeat center fixed;
+	background-size: cover;
+  background-clip: content-box;
+}
+
+
+
+
+/* Main marketing message */
+
+
+/* Supporting marketing content */
+.marketing {
+  margin: 35px 0;
+}
+
+/* Responsive: Portrait tablets and up */
+
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+
+ div.dataTables_paginate{
+	       font-size: 23px;
+}
+
+
+.finalizarPedidoBoton{
+	    color: #1b1919;
+}
+
+.btn:not(:disabled):not(.disabled){
+	color: black;
+	    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: left;
+    width: 180px;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}

@@ -1,5 +1,5 @@
-
 <%= if @usuario == nil do %>
+
 <h2><%= link "Iniciar Sesion", to: login_path(@conn, :login_usuario) %></h2>
 <%= else %>
 <h2><%= link "Cerrar Sesion", to: login_path(@conn, :cerrar_sesion) %> </h2>

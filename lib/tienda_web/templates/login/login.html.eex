@@ -1,26 +1,13 @@
-<div>
+<div class= "contenedor-formulario">
   <%= form_for @datos, login_path(@conn, :validacion), fn f -> %>
-
-    <div>
-      <%= label f, "Email" %>
-      <div>
-        <%= email_input f, :email %>
-      </div>
+    <div class="toggle">
+      <span><%= link "Registrase", to: usuario_path(@conn, :new), class: "link" %></span>
     </div>
+    <h2> Iniciar Sesion </h2>
+    <%= email_input f, :email, [class: "email_input",placeholder: "Correo Electronico", required: ""] %>
+    <%= password_input f, :password, [class: "password_input",placeholder: "Contraseña", required: ""]%>
 
-    <div>
-      <%= label f, "Contraseña" %></div>
-      <div>
-        <%= password_input f, :password %>
-      </div>
-    </div>
 
-    <%= submit "Ingresar" %>
-
-    <div>
-      <%= link "Atras", to: page_path(@conn, :index)%>
-      <%= link "Registrase", to: usuario_path(@conn, :new) %>
-    </div>
-
+    <%= submit "Ingresar", [class: "button"] %>
   <%end%>
 </div>

@@ -1,39 +1,15 @@
-<%= form_for @changeset, @action, fn f -> %>
+<div class="contenedor-formulario">
+  <%= form_for @changeset, usuario_path(@conn, :create), fn f -> %>
+    <h2>Registrar Nuevo Usuario</h2>
 
-  <div>
-    <%= label f, :nombres, "Nombres" %>
-    <div>
-      <%= text_input f, :nombres %>
-    </div>
-  </div>
+    <%= text_input f, :nombres, [class: "text_input",placeholder: "Ingrese su nombre", required: ""] %>
+    <%= text_input f, :apellido, [class: "text_input",placeholder: "Ingrese su apellido", required: ""] %>
+    <%= email_input f, :email, [class: "email_input",placeholder: "Correo Electronico", required: ""] %>
+    <%= password_input f, :password, [class: "password_input",placeholder: "Ingrese su contraseña", required: ""] %>
+    <%= number_input f, :telefono, [class: "number_input",placeholder: "Ingrese su numero telefonico", required: ""] %>
 
-  <div>
-    <%= label f, :apellido, "Apellidos" %>
-    <div>
-      <%= text_input f, :apellido %>
-    </div>
-  </div>
-  <div>
-    <%= label f, :email, "email" %>
-    <div>
-      <%= email_input f, :email %>
-    </div>
-  </div>
+    <%= submit "Guardar", [class: "button"] %>
+  <%end%>
 
-  <div>
-    <%= label f, :password, "Contraseña" %>
-    <div>
-      <%= password_input f, :password %>
-      <p>minimo 6 caracteres</p>
-    </div>
-  </div>
-
-  <div>
-    <%= label f, :telefono, "Telefono" %>
-    <div>
-      <%= number_input f, :telefono %>
-    </div>
-  </div>
-
-<%= submit "Guardar" %>
-<%end%>
+  <%= button "Volver", to: login_path(@conn, :login_usuario), class: "button-volver"%>
+</div>

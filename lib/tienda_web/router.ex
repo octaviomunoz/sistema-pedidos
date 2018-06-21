@@ -23,6 +23,7 @@ defmodule TiendaWeb.Router do
     get "/", PageController, :index
 
     get "/login", LoginController, :login_usuario
+    post "/login", LoginController, :login_usuario
     post "/validacion", LoginController, :validacion
     get "/finalizar-sesion", LoginController, :cerrar_sesion
 

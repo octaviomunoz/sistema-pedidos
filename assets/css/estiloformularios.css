@@ -1,0 +1,116 @@
+/*Archivo de CSS de para representar el login y los regitros*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;;
+}
+
+.contenedor-formulario{
+  position: relative;
+  background: rgba(28, 28, 28, 0.7);
+  width: 100%;
+  max-width: 500px;
+  margin: 48px auto;
+  color: #fff;
+  border-radius: 5px;
+
+  padding: 30px 30px 0px 30px;
+}
+
+.contenedor-formulario .toggle{
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 25px;
+  text-align: center;
+  border-top: 2px solid #f0cc63;
+  border-bottom: 2px solid #f0cc63;
+
+  transition: all .5s ease;
+  cursor: pointer;
+}
+
+.contenedor-formulario .toggle .link {
+  letter-spacing: 1px;
+}
+
+.contenedor-formulario .toggle:hover {
+  border-top: 2px solid #65a0f0;
+  border-bottom: 2px solid #65a0f0;
+}
+
+.contenedor-formulario h2 {
+  margin: 0 0 28px 0;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1px;
+}
+
+.contenedor-formulario input[type=email],
+.contenedor-formulario input[type=password],
+.contenedor-formulario input[type=text],
+.contenedor-formulario input[type=number]{
+  outline: none;
+  background: rgba(0, 0, 0, 0.5);
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  border-bottom: 3px solid #f0cc63;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0 0 20px 0;
+  transition: all .5s ease;
+}
+
+.contenedor-formulario input[type=email]:focus,
+.contenedor-formulario input[type=password]:focus,
+.contenedor-formulario input[type=text]:focus,
+.contenedor-formulario input[type=number]:focus{
+  border-bottom: 3px solid #65a0f0;
+}
+
+.contenedor-formulario .number_input{
+    -webkit-appearance: none;
+    -moz-appearance:textfield;
+}
+
+.contenedor-formulario input[type=number]::-webkit-outer-spin-button,
+.contenedor-formulario input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.contenedor-formulario .button{
+  background: rgba(210, 142, 11, 0.95);
+  color: #fff;
+  border: none;
+  margin: 0 5px;
+  margin-bottom: 20px;
+  width:  100%;
+  padding: 10px 0;
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.contenedor-formulario .button-volver{
+  background: rgba(205, 23, 23, 0.95);
+  color: #fff;
+  border: none;
+  margin: 20px 5px;
+  margin-bottom: 20px;
+  width:  100%;
+  padding: 10px 0;
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 16px;
+  cursor: pointer;
+}
